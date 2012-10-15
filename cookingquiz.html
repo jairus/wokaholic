@@ -279,13 +279,7 @@
                    elemZIndex(canvas, 10);
                    canvas.css("display", "none");
                    elemLink(canvas,"index.html");
-                   /*canvas.mousedown(function(){
-                                    jQuery(this).css("display", "none");
-                                    jQuery("#score-correct").css("visibility", "hidden");
-                                    jQuery("#score-incorrect").css("visibility", "hidden");
-                                    jQuery("#score-title").css("visibility", "hidden");
-                                    });
-                   */
+                   
                    //score-correct
                    canvas = jQuery("#score-correct");
                    canvas.addClass("scale");
@@ -364,7 +358,6 @@
                    elemTop(canvas, 870);
                    elemLeft(canvas, 150);
                    //canvas.css("background-color", "blue");
-                   //canvasImage(canvas,"images/answer-selected.png");
                    canvas.mousedown(function(){
                                     jQuery(".selected").each(function(){
                                                              canvasImage(jQuery(this),"images/answer-notselected.png");
@@ -571,8 +564,6 @@
                                                        canvas = jQuery("#message-correct");
                                                        canvas.css("visibility", "hidden");
                                                        
-                                                       // alert("QUIZ COMPLETE! Your score is " + score);
-                                               
                                                         //quiz-score
                                                         canvas = jQuery("#score-bg");
                                                         canvas.css("display", "block");
@@ -667,8 +658,6 @@
                                                        canvas = jQuery("#message-incorrect");
                                                        canvas.css("visibility", "hidden");
                                                        
-                                                       // alert("QUIZ COMPLETE! Your score is " + score);
-                                               
                                                         //quiz-score
                                                         canvas = jQuery("#score-bg");
                                                         canvas.css("display", "block");
@@ -711,7 +700,7 @@
                                                                         canvasImage(jQuery(this),"images/answer-notselected.png");
                                                                         });
                                             } else {
-                                                //alert ("no more questions! Your score is " + score);
+                                                
                                             }
                                             
                                             });
