@@ -1,0 +1,764 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+         <!--<link href="css/style.css" type="text/css" rel="stylesheet" /> -->
+        <script src="js/jquery-1.7.2.min.js" language="javascript"></script>
+        <script src="js/easeljs-0.4.2.min.js" language="javascript"></script>
+        <script src="js/iscroll.js" language="javascript"></script>
+        <script src="js/_nmg.js" language="javascript"></script>
+        <script language="javascript">
+            var quizQuestions = {
+                "questions" : [{"question": "To cook food in its own juices with a small amount of fat over low heat, just until softened",
+                               "answer":"d",
+                               "a": "Simmering",
+                               "b": "Stewing",
+                               "c": "Boiling",
+                               "d": "Sweating"},
+                               {"question": "The difference between a convection oven and a conventional oven",
+                               "answer":"a",
+                               "a": "Fan",
+                               "b": "Broiler setting",
+                               "c": "Radioactivity",
+                               "d": "All of the above"},
+                               {"question": "Which goes best with flatter and longer pasta shapes?",
+                               "answer":"a",
+                               "a": "Olive oil and cream sauces",
+                               "b": "Chunky and assertive sauces",
+                               "c": "Sauces with fresh tomatoes",
+                               "d": "None of the above"},
+                               {"question": "What should you look for when buying fresh mussels?",
+                               "answer":"c",
+                               "a": "Widely opened shells",
+                               "b": "Light-colored",
+                               "c": "Closed shells",
+                               "d": "Both a&b"},
+                               {"question": "Which type of wood should you NOT use for smoking foods on an outdoor grill?",
+                               "answer":"a",
+                               "a": "Softwood",
+                               "b": "Hardwood",
+                               "c": "Fruitwood",
+                               "d": "Plywood"},
+                               {"question": "Which of these is an 18th-century word for flattening chicken for quick cooking?",
+                               "answer":"a",
+                               "a": "Spatchcock",
+                               "b": "Anvil",
+                               "c": "Poundeyre",
+                               "d": "All of the above"},
+                               {"question": "What salad dressing gets its name from a region that's popular among outdoors enthusiasts?",
+                               "answer":"b",
+                               "a": "Ranch",
+                               "b": "Thousand Island",
+                               "c": "Green Goddess",
+                               "d": "Ceasar Salad"},
+                               {"question": "A basic pesto sauce consists of basil, Parmesan, olive oil, salt and:",
+                               "answer":"c",
+                               "a": "Pepper",
+                               "b": "Tomato Paste",
+                               "c": "Pine Nuts",
+                               "d": "Vinegar"},
+                               {"question": "What's a mycophile?",
+                               "answer":"b",
+                               "a": "Wine Connoisseur",
+                               "b": "Edible Mushroom Hunter",
+                               "c": "Person who loves wild game",
+                               "d": "None of the above"},
+                               {"question": "The hand test for grilling is used to:",
+                               "answer":"a",
+                               "a": "Determine the heat of coals",
+                               "b": "Test the doneness of meat",
+                               "c": "Identify food when cooking in the dark",
+                               "d": "Test the hand’s heat tolerance"},
+                               {"question": "Most cooks avoid cooking wines because they contain what?",
+                               "answer":"a",
+                               "a": "Salt",
+                               "b": "Too much alcohol",
+                               "c": "Fat",
+                               "d": "Sugar"},
+                               {"question": "The soft-ball stage of syrup is when it can be rolled into a ball and when pressed it:",
+                               "answer":"b",
+                               "a": "Gives some resistance",
+                               "b": "Flattens easily",
+                               "c": "Does not flatten",
+                               "d": "Either a or c"},
+                               {"question": "Which of the following should you avoid marinating overnight?",
+                               "answer":"c",
+                               "a": "Chicken",
+                               "b": "Pork",
+                               "c": "Fish",
+                               "d": "Turkey"},
+                               {"question": "What is a quick fix if your rice is too wet?",
+                               "answer":"d",
+                               "a": "Turn up the heat",
+                               "b": "Stir the rice",
+                               "c": "Put more rice",
+                               "d": "Uncover the pot"},
+                               {"question": "What degree is required to smoke meat?",
+                               "answer":"b",
+                               "a": "100-150 degrees",
+                               "b": "150-200 degrees",
+                               "c": "250-300 degrees",
+                               "d": "350-400 degrees"},
+                               {"question": "What type of sauce is best for long, narrowly shaped pasta?",
+                               "answer":"a",
+                               "a": "Oil-based Sauses (thin and smooth)",
+                               "b": "Thick Sauce",
+                               "c": "Sauce which contains chunks of meat",
+                               "d": "Any of the above"},
+                               {"question": "Which of the following is a suitable substitute for oil in some bread recipes?",
+                               "answer":"c",
+                               "a": "Milk",
+                               "b": "Margarine",
+                               "c": "Applesauce",
+                               "d": "Butter"},
+                               {"question": "What is poaching?",
+                               "answer":"d",
+                               "a": "Quick Boil",
+                               "b": "Dry Boiling",
+                               "c": "Stewing",
+                               "d": "Slow Simmer"},
+                               {"question": "What is mincing?",
+                               "answer":"c",
+                               "a": "Make shallow cuts in the surface of the food",
+                               "b": "Cut food in fine pieces",
+                               "c": "Cut food lengthwise in thin strips",
+                               "d": "Cut food in large pieces"},
+                               {"question": "When doubling a recipe which of the following should you NEVER double?",
+                               "answer":"b",
+                               "a": "Flour",
+                               "b": "Alcohol",
+                               "c": "Water",
+                               "d": "Vinegar"},
+                               {"question": "A French word which means getting all the ingredients ready before you start to cook",
+                               "answer":"a",
+                               "a": "Mise En Place",
+                               "b": "Mise En Scene",
+                               "c": "Mise En Gear",
+                               "d": "Mise En Garde"},
+                               {"question": "Quickly cooking food in a pan on the stove with a little bit of oil or fat over fairly high heat",
+                               "answer":"d",
+                               "a": "Deglaze",
+                               "b": "Roux",
+                               "c": "Roast",
+                               "d": "Sauté"}]
+            };
+            
+            function wrapText(canvas, text, x, y, maxWidth, lineHeight, font, color) {
+                
+                context = canvas.getContext("2d");
+                context.clearRect ( 0 , 0 , canvas.width , canvas.height );
+                context.fillStyle = color;
+                context.font = font;
+                
+                var words = text.split(" ");
+                var line = "";
+                for(var n = 0; n < words.length; n++) {
+                    var testLine = line + words[n] + " ";
+                    var metrics = context.measureText(testLine);
+                    var testWidth = metrics.width;
+                    if(testWidth > maxWidth) {
+                        context.fillText(line, x, y);
+                        line = words[n] + " ";
+                        y += lineHeight;
+                    }
+                    else {
+                        line = testLine;
+                    }
+                }
+                context.fillText(line, x, y);
+            }
+            
+            function randomFrom(array, n) {
+                var at = 0;
+                var tmp, current, top = array.length;
+                
+                if(top) while(--top && at++ < n) {
+                    current = Math.floor(Math.random() * (top - 1));
+                    tmp = array[current];
+                    array[current] = array[top];
+                    array[top] = tmp;
+                }
+                
+                return array.slice(-n);
+            }
+            
+            function getTitle(score) {
+                
+                if (score <= 4) {
+                    return "Dishwasher!";
+                } else if (score > 4 && score <= 9) {
+                    return "Kitchen Helper!";
+                } else if (score > 10 && score <= 14) {
+                    return "Sous Chef!";
+                } else if (score == 15) {
+                    return "Master Chef!";
+                }
+     
+            }
+                        
+            //document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false); //preventing the pinch zoom et al
+            
+            
+            var myScroll;
+            
+            function loaded() {
+                /*myScroll = new iScroll('wrapper');
+                
+                wrapper = jQuery("#wrapper");
+                elemAnimateIn(wrapper); // animate the contents of the wrapper
+                */
+            }
+            
+            function reset() {
+                
+                
+                
+            }
+            document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+            jQuery(function(){
+                   
+                   //nmgcontainer
+                   div = jQuery("#nmgcontainer");
+                   div.addClass("scale");
+                   elemAbs(div);
+                   elemWH(div, 2048, 1536);
+                   
+                   //background
+                   canvas = jQuery("#background");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   canvasImage(canvas,"images/cookingquiz-background.jpg");
+                   elemWH(canvas, 2048, 1536);
+                   elemZIndex(canvas, 10);
+                   
+                   //overlay-correct
+                   canvas = jQuery("#overlay-correct");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   canvasImage(canvas,"images/quiz-correct.jpg");
+                   elemWH(canvas, 1280, 800);
+                   elemZIndex(canvas, 10);
+                   canvas.css("display", "none");
+                   canvas.mousedown(function(){
+                                    jQuery(this).css("display", "none");
+                                    });
+                   
+                   //overlay-incorrect
+                   canvas = jQuery("#overlay-incorrect");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   canvasImage(canvas,"images/quiz-incorrect.jpg");
+                   elemWH(canvas, 1280, 800);
+                   elemZIndex(canvas, 10);
+                   canvas.css("display", "none");
+                   canvas.mousedown(function(){
+                                    jQuery(this).css("display", "none");
+                                    jQuery("#message-incorrect").css("visibility", "hidden");
+                                    });
+                   
+                   //message-incorrect
+                   canvas = jQuery("#message-incorrect");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 475, 150);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas,470);
+                   elemLeft(canvas, 240);
+                   //canvas.css("background-color", "blue");
+                   canvas.mousedown(function(){
+                                    jQuery(this).css("visibility", "hidden");
+                                    jQuery("#overlay-incorrect").css("display", "none");
+                                    });
+                   
+                   //score-bg
+                   canvas = jQuery("#score-bg");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   canvasImage(canvas,"images/score-bg.jpg");
+                   elemWH(canvas, 1280, 800);
+                   elemZIndex(canvas, 10);
+                   canvas.css("display", "none");
+                   elemLink(canvas,"index.html");
+                   /*canvas.mousedown(function(){
+                                    jQuery(this).css("display", "none");
+                                    jQuery("#score-correct").css("visibility", "hidden");
+                                    jQuery("#score-incorrect").css("visibility", "hidden");
+                                    jQuery("#score-title").css("visibility", "hidden");
+                                    });
+                   */
+                   //score-correct
+                   canvas = jQuery("#score-correct");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 50,40);
+                   elemZIndex(canvas, 11);
+                   elemTop(canvas, 355);
+                   elemLeft(canvas, 280);
+                   canvas.css("visibility", "hidden");
+                   //canvas.css("background-color", "green");
+                   
+                   //score-incorrect
+                   canvas = jQuery("#score-incorrect");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 50,40);
+                   elemZIndex(canvas, 11);
+                   elemTop(canvas, 355 + 45);
+                   elemLeft(canvas, 280 + 20);
+                   canvas.css("visibility", "hidden");
+                   //canvas.css("background-color", "green");
+                    
+                   //score-title
+                   canvas = jQuery("#score-title");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 300,40);
+                   elemZIndex(canvas, 11);
+                   elemTop(canvas, 590);
+                   elemLeft(canvas, 320);
+                   canvas.css("visibility", "hidden");
+                   //canvas.css("background-color", "green");
+                   /*canvas = document.getElementById("score-title");
+                   context = canvas.getContext("2d");
+                   context.font = 'bold 30pt arial ';
+                   context.textAlign = 'center';
+                   context.textBaseline = 'middle';
+                   context.fillStyle = "#d91b01";
+                   context.fillText("Kitchen Helper!", canvas.width / 2, canvas.height / 2);
+                   */
+                   
+                   //home
+                   canvas = jQuery("#home");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 50,50);
+                   elemZIndex(canvas, 10);
+                   canvasImage(canvas,"images/home-button.png");
+                   elemRightAlign(canvas);
+                   elemBottomAlign(canvas);
+                   elemBottom(canvas, 15);
+                   elemRight(canvas, 15);
+                   //canvas.css("background-color", "blue");
+                   elemLink(canvas,"index.html");
+                   
+                   //number
+                   canvas = jQuery("#number");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 150,120);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas, 217);
+                   elemLeft(canvas, 1145);
+                   //canvas.css("background-color", "green");
+                   
+                   
+                   //question
+                   canvas = jQuery("#question");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 1150,170);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas, 570);
+                   elemLeft(canvas, 160);
+                   //canvas.css("background-color", "blue");
+                   
+                   //a
+                   canvas = jQuery("#a");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 520,90);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas, 870);
+                   elemLeft(canvas, 150);
+                   //canvas.css("background-color", "blue");
+                   //canvasImage(canvas,"images/answer-selected.png");
+                   canvas.mousedown(function(){
+                                    jQuery(".selected").each(function(){
+                                                             canvasImage(jQuery(this),"images/answer-notselected.png");
+                                                             });
+                                    
+                                    canvasImage(jQuery("#a-selected-bg"),"images/answer-selected.png");
+                                    
+                                    });
+                   
+                   //a-selected-bg
+                   canvas = jQuery("#a-selected-bg");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 579,152);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas, 837);
+                   elemLeft(canvas, 123);
+                   //canvas.css("background-color", "blue");
+                   
+                   //b
+                   canvas = jQuery("#b");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 520,90);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas, 870 + 180);
+                   elemLeft(canvas, 150);
+                   //canvas.css("background-color", "red");
+                   canvas.mousedown(function(){
+                                    jQuery(".selected").each(function(){
+                                                             canvasImage(jQuery(this),"images/answer-notselected.png");
+                                                             });
+                                    
+                                    canvasImage(jQuery("#b-selected-bg"),"images/answer-selected.png");
+                                    
+                                    });
+                   //b-selected-bg
+                   canvas = jQuery("#b-selected-bg");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 579,152);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas, 837 + 180);
+                   elemLeft(canvas, 122);
+                   
+                   
+       
+                   //c
+                   canvas = jQuery("#c");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 520,90);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas, 870);
+                   elemLeft(canvas, 150 + 650);
+                   //canvas.css("background-color", "pink");
+                   canvas.mousedown(function(){
+                                    jQuery(".selected").each(function(){
+                                                             canvasImage(jQuery(this),"images/answer-notselected.png");
+                                                             });
+                                    
+                                    canvasImage(jQuery("#c-selected-bg"),"images/answer-selected.png");
+                                    
+                                    });
+                   //c-selected-bg
+                   canvas = jQuery("#c-selected-bg");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 579,152);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas, 837 );
+                   elemLeft(canvas, 123 + 649);
+                   
+                   
+                   //d
+                   canvas = jQuery("#d");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 520, 90);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas, 870 + 180);
+                   elemLeft(canvas, 150 + 650);
+                   //canvas.css("background-color", "pink");
+                   canvas.mousedown(function(){
+                                    jQuery(".selected").each(function(){
+                                                             canvasImage(jQuery(this),"images/answer-notselected.png");
+                                                             });
+                                    
+                                    canvasImage(jQuery("#d-selected-bg"),"images/answer-selected.png");
+                                    
+                                    });
+                   //d-selected-bg
+                   canvas = jQuery("#d-selected-bg");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 579,152);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas, 837 + 180);
+                   elemLeft(canvas, 122 + 649);
+                   
+                   
+                   jQuery(".selected").each(function(){
+                                            canvasImage(jQuery(this),"images/answer-notselected.png");
+                                            });
+                   
+                   // INITIALIZE RANDOM CONTENT
+                   var questionsArray = [];
+                   var max = 15, min = 0;
+                   while(max >= min) {
+                   questionsArray.push(min++);
+                   }
+                   console.log(questionsArray);
+                   var finalQuestions = randomFrom(questionsArray,15);
+                   console.log(finalQuestions);
+                   for(var x in finalQuestions) {
+                   console.log("finalQuestion: " + quizQuestions.questions[finalQuestions[x]].question);
+                   }
+                   var current = 0, score = 0;
+                   
+                   canvas = document.getElementById("number");
+                   context = canvas.getContext("2d");
+                   context.font = 'bold 100pt arial ';
+                   context.textAlign = 'center';
+                   context.textBaseline = 'middle';
+                   context.fillStyle = "white";
+                   context.fillText("1", canvas.width / 2, canvas.height / 2);
+                   
+                   canvas = document.getElementById("question");
+                   text = "1. " + quizQuestions.questions[finalQuestions[current]].question;
+                   wrapText(canvas, text, 20, canvas.height/2, (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                   console.log("question1:" + text);
+                   
+                   canvas = document.getElementById("a");
+                   text = quizQuestions.questions[finalQuestions[current]].a;
+                   wrapText(canvas, "A. " + text, 20, (canvas.height/2 ) , (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                   console.log("a1:" + text);
+                   
+                   canvas = document.getElementById("b");
+                   text = quizQuestions.questions[finalQuestions[current]].b;
+                   wrapText(canvas, "B. " + text, 20, (canvas.height/2 ) , (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                   console.log("b1:" + text);
+                   
+                   canvas = document.getElementById("c");
+                   text = quizQuestions.questions[finalQuestions[current]].c;
+                   wrapText(canvas, "C. " + text, 20, (canvas.height/2 ) , (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                   console.log("c1:" + text);
+                   
+                   canvas = document.getElementById("d");
+                   text = quizQuestions.questions[finalQuestions[current]].d;
+                   wrapText(canvas, "D. " + text, 20, (canvas.height/2 ), (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                   console.log("d1:" + text);
+                   
+                   jQuery(".answers").dblclick(function() {
+                                            
+                                            if (current < 15) {
+                                                console.log("current" + current);
+                                                if(jQuery(this).attr("id") == quizQuestions.questions[finalQuestions[current]].answer) {
+                                                    score++;
+                                                    current++;
+                                                    console.log("correct! Score is " + score);
+                                                    
+                                                   //overlay-correct
+                                                   canvas = jQuery("#overlay-correct");
+                                                   canvas.css("display", "block");
+                                                   
+                                                    if(current <= 14) {
+                                            
+                                                        canvas = document.getElementById("number");
+                                                        context = canvas.getContext("2d");
+                                                        context.font = 'bold 100pt arial ';
+                                                        context.textAlign = 'center';
+                                                        context.textBaseline = 'middle';
+                                                        context.fillStyle = "white";
+                                                        context.clearRect ( 0 , 0 , canvas.width , canvas.height );
+                                                        context.fillText(current+1, canvas.width / 2, canvas.height / 2);
+                                                        
+                                                        canvas = document.getElementById("question");
+                                                        text = (current+1)+"."+ quizQuestions.questions[finalQuestions[current]].question;
+                                                        wrapText(canvas, text, 20, canvas.height/2, (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                                                        console.log("question"+current+":" + text);
+                                                        
+                                                        canvas = document.getElementById("a");
+                                                        text = quizQuestions.questions[finalQuestions[current]].a;
+                                                        wrapText(canvas, "A. " + text, 20, (canvas.height/2 ), (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                                                        
+                                                        canvas = document.getElementById("b");
+                                                        text = quizQuestions.questions[finalQuestions[current]].b;
+                                                        wrapText(canvas, "B. " + text, 20, (canvas.height/2 ), (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                                                        
+                                                        canvas = document.getElementById("c");
+                                                        text = quizQuestions.questions[finalQuestions[current]].c;
+                                                        wrapText(canvas, "C. " + text, 20, (canvas.height/2 ), (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                                                        
+                                                        canvas = document.getElementById("d");
+                                                        text = quizQuestions.questions[finalQuestions[current]].d;
+                                                        wrapText(canvas, "D. " + text, 20, (canvas.height/2 ) , (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+
+                                                    } else {
+                                                        
+                                                       //overlay-correct
+                                                       canvas = jQuery("#overlay-correct");
+                                                       canvas.css("display", "none");
+                                                       
+                                                       canvas = jQuery("#message-correct");
+                                                       canvas.css("visibility", "hidden");
+                                                       
+                                                        alert("QUIZ COMPLETE! Your score is " + score);
+                                               
+                                                        //quiz-score
+                                                        canvas = jQuery("#score-bg");
+                                                        canvas.css("display", "block");
+                                                            
+                                                        canvas = jQuery("#score-correct");
+                                                        canvas.css("visibility", "visible");
+                                                        canvas = document.getElementById("score-correct");
+                                                        context = canvas.getContext("2d");
+                                                        context.font = 'bold 30pt arial ';
+                                                        context.textAlign = 'center';
+                                                        context.textBaseline = 'middle';
+                                                        context.fillStyle = "#d91b01";
+                                                        context.fillText(score, canvas.width / 2, canvas.height / 2);
+                                                       
+                                                        canvas = jQuery("#score-incorrect");
+                                                        canvas.css("visibility", "visible");
+                                                        canvas = document.getElementById("score-incorrect");
+                                                        context = canvas.getContext("2d");
+                                                        context.font = 'bold 30pt arial ';
+                                                        context.textAlign = 'center';
+                                                        context.textBaseline = 'middle';
+                                                        context.fillStyle = "#d91b01";
+                                                        context.fillText(15-score, canvas.width / 2, canvas.height / 2);
+                                               
+                                                        canvas = document.getElementById("score-title");
+                                                        context = canvas.getContext("2d");
+                                                        context.font = 'bold 30pt arial ';
+                                                        context.textAlign = 'center';
+                                                        context.textBaseline = 'middle';
+                                                        context.fillStyle = "#d91b01";
+                                                        context.fillText(getTitle(score), canvas.width / 2, canvas.height / 2);
+                                                       
+                                                        canvas = jQuery("#score-title");
+                                                        canvas.css("visibility", "visible");
+                                                    }
+                                            
+                                                } else {
+                                                    correctAnswer = quizQuestions.questions[finalQuestions[current]].answer;
+                                                    console.log("wrong! The correct answer is " + quizQuestions.questions[finalQuestions[current]][correctAnswer] +" Score is "+ score);
+                                                    
+                                                   //overlay-incorrect
+                                                   canvas = jQuery("#overlay-incorrect");
+                                                   canvas.css("display", "block");
+                                                   
+                                                   canvas = jQuery("#message-incorrect");
+                                                   canvas.css("visibility", "visible");
+                                               
+                                                   canvas = document.getElementById("message-incorrect");
+                                                   wrapText(canvas, "The correct answer is " + quizQuestions.questions[finalQuestions[current]][correctAnswer] +"." , 20, (canvas.height/2 ) - 30 , (canvas.width - 8), 45, 'bold 30pt arial ',"#613915");
+                                               
+                                                   current++;
+                                                   
+                                                    if(current <= 14) {
+                                                
+                                                        canvas = document.getElementById("number");
+                                                        context = canvas.getContext("2d");
+                                                        context.font = 'bold 100pt arial ';
+                                                        context.textAlign = 'center';
+                                                        context.textBaseline = 'middle';
+                                                        context.fillStyle = "white";
+                                                        context.clearRect ( 0 , 0 , canvas.width , canvas.height );
+                                                        context.fillText(current+1, canvas.width / 2, canvas.height / 2);
+                                                        
+                                                        canvas = document.getElementById("question");
+                                                        text = (current+1)+"."+ quizQuestions.questions[finalQuestions[current]].question;
+                                                        wrapText(canvas, text, 20, canvas.height/2, (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                                                        
+                                                        canvas = document.getElementById("a");
+                                                        text = quizQuestions.questions[finalQuestions[current]].a;
+                                                        wrapText(canvas, "A. " + text, 20, (canvas.height/2 ) , (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                                                        
+                                                        canvas = document.getElementById("b");
+                                                        text = quizQuestions.questions[finalQuestions[current]].b;
+                                                        wrapText(canvas, "B. " + text, 20, (canvas.height/2 ) , (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                                                        
+                                                        canvas = document.getElementById("c");
+                                                        text = quizQuestions.questions[finalQuestions[current]].c;
+                                                        wrapText(canvas, "C. " + text, 20, (canvas.height/2 ), (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                                                        
+                                                        canvas = document.getElementById("d");
+                                                        text = quizQuestions.questions[finalQuestions[current]].d;
+                                                        wrapText(canvas, "D. " + text, 20, (canvas.height/2 ) , (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                                                        
+                                                    } else {
+                                                        
+                                                       //overlay-incorrect
+                                                       canvas = jQuery("#overlay-incorrect");
+                                                       canvas.css("display", "none");
+                                                       
+                                                       canvas = jQuery("#message-incorrect");
+                                                       canvas.css("visibility", "hidden");
+                                                       
+                                                        alert("QUIZ COMPLETE! Your score is " + score);
+                                               
+                                                        //quiz-score
+                                                        canvas = jQuery("#score-bg");
+                                                        canvas.css("display", "block");
+                                               
+                                               
+                                                       canvas = jQuery("#score-correct");
+                                                       canvas.css("visibility", "visible");
+                                                       canvas = document.getElementById("score-correct");
+                                                       context = canvas.getContext("2d");
+                                                       context.font = 'bold 30pt arial ';
+                                                       context.textAlign = 'center';
+                                                       context.textBaseline = 'middle';
+                                                       context.fillStyle = "#d91b01";
+                                                       context.fillText(score, canvas.width / 2, canvas.height / 2);
+                                                       
+                                                       canvas = jQuery("#score-incorrect");
+                                                       canvas.css("visibility", "visible");
+                                                       canvas = document.getElementById("score-incorrect");
+                                                       context = canvas.getContext("2d");
+                                                       context.font = 'bold 30pt arial ';
+                                                       context.textAlign = 'center';
+                                                       context.textBaseline = 'middle';
+                                                       context.fillStyle = "#d91b01";
+                                                       context.fillText(15-score, canvas.width / 2, canvas.height / 2);
+                                                       
+                                                       canvas = document.getElementById("score-title");
+                                                       context = canvas.getContext("2d");
+                                                       context.font = 'bold 30pt arial ';
+                                                       context.textAlign = 'center';
+                                                       context.textBaseline = 'middle';
+                                                       context.fillStyle = "#d91b01";
+                                                       context.fillText(getTitle(score), canvas.width / 2, canvas.height / 2);
+                                                       
+                                                       
+                                                        canvas = jQuery("#score-title");
+                                                        canvas.css("visibility", "visible");
+                                                    }
+                                                }
+                                                
+                                               jQuery(".selected").each(function(){
+                                                                        canvasImage(jQuery(this),"images/answer-notselected.png");
+                                                                        });
+                                            } else {
+                                                alert ("no more questions! Your score is " + score);
+                                            }
+                                            
+                                            });
+
+                   //scaling
+                   jQuery(".scale").each(function(){
+                                         elemScale(jQuery(this));
+                                         }
+                                         );
+                   
+                   jQuery("#nmgcontainer").css("visibility", "visible");
+                   });
+            
+            </script>
+  
+       
+        <title>Wok-A-Holic</title>
+    </head>
+    <body style="margin: 0px;">
+        <div id="nmgcontainer">
+            <canvas id="background"></canvas>
+            <canvas id="home"></canvas>
+            <canvas id="number"></canvas>
+            <canvas id="question"></canvas>
+            <canvas id="a-selected-bg" class="selected"></canvas>
+            <canvas id="b-selected-bg" class="selected"></canvas>
+            <canvas id="c-selected-bg" class="selected"></canvas>
+            <canvas id="d-selected-bg" class="selected"></canvas>
+            <canvas id="a" class="answers"></canvas>
+            <canvas id="b" class="answers"></canvas>
+            <canvas id="c" class="answers"></canvas>
+            <canvas id="d" class="answers"></canvas>
+            <canvas id="overlay-correct"></canvas>
+            <canvas id="overlay-incorrect"></canvas>
+            <canvas id="message-incorrect"></canvas>
+            <canvas id="score-bg"></canvas>
+            <canvas id="score-correct"></canvas>
+            <canvas id="score-incorrect"></canvas>
+            <canvas id="score-title"></canvas>
+            
+        </div>
+        
+    </body>
+</html>
