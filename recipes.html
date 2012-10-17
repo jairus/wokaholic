@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+         <!--<link href="css/style.css" type="text/css" rel="stylesheet" /> -->
+        <script src="js/jquery-1.7.2.min.js" language="javascript"></script>
+        <script src="js/easeljs-0.4.2.min.js" language="javascript"></script>
+        <script src="js/iscroll.js" language="javascript"></script>
+        <script src="js/_nmg.js" language="javascript"></script>
+        <script type="text/javascript" src="js/jquery-ui-1.7.2.custom.js"></script>
+        <script type="text/javascript" src="js/jquery.class.js"></script>
+		<script type="text/javascript" src="js/coverflow.class.js"></script>
+		<script type="text/javascript" src="js/snapshot.class.js"></script>
+        
+        <style>
+            body{
+                background:white;
+                margin:0;
+                padding:0;
+                -moz-user-select: none;
+                -webkit-user-select:none;
+                user-select :none;
+            }
+            
+            div#coverflow{
+                position:absolute;
+                overflow:hidden;
+                padding:10px;
+                width: 700px;
+                height: 400px;
+                left: 10%;
+                top: 15%;
+                font-size:100%;
+                
+            }
+            
+            div.snapshot{
+                position: absolute;
+                text-align: center;
+                background-color: blue;
+                
+                
+            }
+            
+            </style>
+        
+        <script language="javascript">
+            
+            //document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false); //preventing the pinch zoom et al
+            var myScroll;
+            
+            function loaded() {
+                //myScroll = new iScroll('wrapper');
+                
+                //wrapper = jQuery("#wrapper");
+                //elemAnimateIn(wrapper); // animate the contents of the wrapper
+                
+            }
+            document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+            jQuery(function(){
+                   
+                   jQuery('img').bind('dragstart', function(event) { event.preventDefault(); });
+                   
+                   var coverFlowElement = jQuery('#coverflow');
+                   var coverFlow = new CoverFlow(coverFlowElement);
+                   
+                   //coverflow
+                   div = jQuery("#coverflow");
+                   elemZIndex(div, 15);
+                   div.addClass("scale");
+                   
+                   
+                   //nmgcontainer
+                   div = jQuery("#nmgcontainer");
+                   div.addClass("scale");
+                   elemAbs(div);
+                   elemWH(div, 1024, 768);
+                   
+                   //background
+                   canvas = jQuery("#background");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   canvasImage(canvas,"images/recipes-bg.png");
+                   elemWH(canvas, 1024, 768);
+                   elemZIndex(canvas, 10);
+                   
+                   //home
+                   canvas = jQuery("#home");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 60,54);
+                   elemZIndex(canvas, 10);
+                   canvasImage(canvas,"images/home-button.png");
+                   elemLeftAlign(canvas);
+                   //elemBottomAlign(canvas);
+                   elemTop(canvas, 15);
+                   elemRight(canvas, 15);
+                   //canvas.css("background-color", "blue");
+                   elemLink(canvas,"index.html");
+                   
+                   //scaling
+                   jQuery(".scale").each(function(){
+                                         elemScale(jQuery(this));
+                                         }
+                                         );
+                   
+                   jQuery("#nmgcontainer").css("visibility", "visible");
+                   });
+            
+            </script>
+  
+       
+        <title>Wok-A-Holic</title>
+    </head>
+    <body style="margin: 0px;">
+        <div id="nmgcontainer">
+            <canvas id="background" ></canvas>
+            <canvas id="home"></canvas>
+            <div id="coverflow">
+                
+				<div class="snapshot">1</div>
+				<div class="snapshot">2</div>
+				<div class="snapshot">3</div>
+                <div class="snapshot">7</div>
+				<div class="snapshot">8</div>
+				<div class="snapshot">9</div>
+				<div class="snapshot">10</div>
+                
+            </div>
+        </div>
+        
+    </body>
+</html>
