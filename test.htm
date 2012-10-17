@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+         <!--<link href="css/style.css" type="text/css" rel="stylesheet" /> -->
+        <script src="js/jquery-1.7.2.min.js" language="javascript"></script>
+        <script src="js/easeljs-0.4.2.min.js" language="javascript"></script>
+        <script src="js/iscroll.js" language="javascript"></script>
+        <script src="js/_nmg.js" language="javascript"></script>
+		<script>
+		var globalbg;
+		jQuery(function(){
+			canvas = jQuery("#bg");
+			canvas.addClass("scale");
+			elemWH(canvas, 1024, 768);
+			//elemAbs(canvas);
+			elemBorder(canvas);
+			elemZIndex(canvas, 0);
+			json = {
+				"images": ["images/bg.png"], 
+				"animations": {
+					"all": [0, 1], 
+					"home": [0], 
+					"wrong": [1]
+				},
+				"frames": {
+					"height": 768,
+					"regX": 0,
+					"count": 2,
+					"regY": 0,
+					"width": 1024
+				}
+			};
+			globalbg = new mm_animation("bg", json); // this paramater is scale
+			globalbg.play("home"); //if this code doesnt work use this...  globalbg._anim.gotoAndPlay(where);
+			canvas.click(function(){
+				if(!globalbg._where||globalbg._where=='wrong'){
+					globalbg.play("home");
+				}
+				else{
+					globalbg.play("wrong");
+				}
+				
+			});
+		});
+
+		</script>
+	</head>
+	<body style='margin:0px;'>
+	<canvas id='bg'></canvas>
+	</body>
+</html>

@@ -419,6 +419,7 @@ function mm_animation(idx, json) {
 	
 	//public _anim object
 	this._anim = bmpAnim;
+	this._where = "";
 	
 	stagearr[this._idx] = new Stage(canvas);
 	stagearr[this._idx].autoClear = true;
@@ -427,10 +428,11 @@ function mm_animation(idx, json) {
 	//animation controls
 	this.play = function(where){
 		if(where){
-			bmpAnim.gotoAndPlay(where);
+			this._where = where;
+			this._anim.gotoAndPlay(where);
 		}
 		else{
-			bmpAnim.gotoAndPlay(0);
+			this._anim.gotoAndPlay(0);
 		}
 	}
 	//this currently doesnt work
