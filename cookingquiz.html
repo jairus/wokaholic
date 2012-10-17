@@ -215,28 +215,64 @@
                 
             }
             document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+            var globalbg;
             jQuery(function(){
                    
                    //nmgcontainer
                    div = jQuery("#nmgcontainer");
                    div.addClass("scale");
                    elemAbs(div);
-                   elemWH(div, 2048, 1536);
+                   elemWH(div, 1024, 768);
                    
                    //background
                    canvas = jQuery("#background");
                    canvas.addClass("scale");
                    elemAbs(canvas);
-                   canvasImage(canvas,"images/cookingquiz-background.jpg");
-                   elemWH(canvas, 2048, 1536);
+                   //canvasImage(canvas,"images/cookingquiz-background.jpg");
+                   elemWH(canvas, 1024, 768);
                    elemZIndex(canvas, 10);
+                   json = {
+                   "images": ["images/quiz-frames.png"],
+                   "animations": {
+                   "all": [0, 3],
+                   "game": [0],
+                   "correct": [1],
+                   "wrong": [2],
+                   "score": [3]
+                   },
+                   "frames": {
+                   "height": 768,
+                   "regX": 0,
+                   "count": 4,
+                   "regY": 0,
+                   "width": 1024
+                   }
+                   };
+                   canvas.click(function(){
+                                
+                                if(!globalbg._where||globalbg._where=='correct'){
+                                    globalbg.play("game");
+                                }
+                                if(!globalbg._where||globalbg._where=='wrong'){
+                                jQuery("#message-incorrect").css("display", "none");
+                                globalbg.play("game");
+                                }
+                                jQuery(".game-text-elements").each(function(){
+                                                                  jQuery(this).css("display", "block");
+                                                                  }); 
+                                });
+                  
+                   globalbg = new mm_animation("background", json); 
+                   globalbg.play("game"); //if this code doesnt work use this...  globalbg._anim.gotoAndPlay(where);
+                   
+                   
                    
                    //overlay-correct
                    canvas = jQuery("#overlay-correct");
                    canvas.addClass("scale");
                    elemAbs(canvas);
                    canvasImage(canvas,"images/quiz-correct.jpg");
-                   elemWH(canvas, 2048, 1536);
+                   elemWH(canvas, 1024, 768);
                    elemZIndex(canvas, 10);
                    canvas.css("display", "none");
                    canvas.mousedown(function(){
@@ -248,7 +284,7 @@
                    canvas.addClass("scale");
                    elemAbs(canvas);
                    canvasImage(canvas,"images/quiz-incorrect.jpg");
-                   elemWH(canvas, 2048, 1536);
+                   elemWH(canvas, 1024, 768);
                    elemZIndex(canvas, 10);
                    canvas.css("display", "none");
                    canvas.mousedown(function(){
@@ -260,10 +296,10 @@
                    canvas = jQuery("#message-incorrect");
                    canvas.addClass("scale");
                    elemAbs(canvas);
-                   elemWH(canvas, 475, 150);
+                   elemWH(canvas, 238, 75);
                    elemZIndex(canvas, 10);
-                   elemTop(canvas,930);
-                   elemLeft(canvas, 500);
+                   elemTop(canvas,465);
+                   elemLeft(canvas, 250);
                    //canvas.css("background-color", "blue");
                    canvas.mousedown(function(){
                                     jQuery(this).css("visibility", "hidden");
@@ -275,7 +311,7 @@
                    canvas.addClass("scale");
                    elemAbs(canvas);
                    canvasImage(canvas,"images/quiz-score-bg.jpg");
-                   elemWH(canvas, 2048, 1536);
+                   elemWH(canvas, 1024, 768);
                    elemZIndex(canvas, 10);
                    canvas.css("display", "none");
                    elemLink(canvas,"index.html");
@@ -284,10 +320,10 @@
                    canvas = jQuery("#score-correct");
                    canvas.addClass("scale");
                    elemAbs(canvas);
-                   elemWH(canvas, 100,70);
+                   elemWH(canvas, 50,35);
                    elemZIndex(canvas, 11);
-                   elemTop(canvas, 680);
-                   elemLeft(canvas, 480);
+                   elemTop(canvas, 345);
+                   elemLeft(canvas, 240);
                    canvas.css("visibility", "hidden");
                    //canvas.css("background-color", "green");
                    
@@ -295,10 +331,10 @@
                    canvas = jQuery("#score-incorrect");
                    canvas.addClass("scale");
                    elemAbs(canvas);
-                   elemWH(canvas, 100,80);
+                   elemWH(canvas, 50,40);
                    elemZIndex(canvas, 11);
-                   elemTop(canvas, 680 + 90);
-                   elemLeft(canvas, 480 + 20);
+                   elemTop(canvas, 340 + 45);
+                   elemLeft(canvas, 240 + 10);
                    canvas.css("visibility", "hidden");
                    //canvas.css("background-color", "green");
                     
@@ -306,10 +342,10 @@
                    canvas = jQuery("#score-title");
                    canvas.addClass("scale");
                    elemAbs(canvas);
-                   elemWH(canvas, 600,80);
+                   elemWH(canvas, 300,40);
                    elemZIndex(canvas, 11);
-                   elemTop(canvas, 1120);
-                   elemLeft(canvas, 490);
+                   elemTop(canvas, 560);
+                   elemLeft(canvas, 220);
                    canvas.css("visibility", "hidden");
                    //canvas.css("background-color", "green");
     
@@ -318,13 +354,13 @@
                    canvas = jQuery("#home");
                    canvas.addClass("scale");
                    elemAbs(canvas);
-                   elemWH(canvas, 120,108);
+                   elemWH(canvas, 60,54);
                    elemZIndex(canvas, 10);
                    canvasImage(canvas,"images/home-button.png");
                    elemRightAlign(canvas);
                    elemBottomAlign(canvas);
-                   elemBottom(canvas, 40);
-                   elemRight(canvas, 40);
+                   elemBottom(canvas, 15);
+                   elemRight(canvas, 15);
                    //canvas.css("background-color", "blue");
                    elemLink(canvas,"index.html");
                    
@@ -332,10 +368,10 @@
                    canvas = jQuery("#number");
                    canvas.addClass("scale");
                    elemAbs(canvas);
-                   elemWH(canvas, 150,120);
+                   elemWH(canvas, 75,60);
                    elemZIndex(canvas, 10);
-                   elemTop(canvas, 217);
-                   elemLeft(canvas, 1145);
+                   elemTop(canvas, 108);
+                   elemLeft(canvas, 574);
                    //canvas.css("background-color", "green");
                    
                    
@@ -343,120 +379,55 @@
                    canvas = jQuery("#question");
                    canvas.addClass("scale");
                    elemAbs(canvas);
-                   elemWH(canvas, 1150,170);
+                   elemWH(canvas, 575,85);
                    elemZIndex(canvas, 10);
-                   elemTop(canvas, 570);
-                   elemLeft(canvas, 160);
+                   elemTop(canvas, 285);
+                   elemLeft(canvas, 80);
                    //canvas.css("background-color", "blue");
                    
                    //a
                    canvas = jQuery("#a");
                    canvas.addClass("scale");
                    elemAbs(canvas);
-                   elemWH(canvas, 520,90);
+                   elemWH(canvas, 260,45);
                    elemZIndex(canvas, 10);
-                   elemTop(canvas, 870);
-                   elemLeft(canvas, 150);
+                   elemTop(canvas, 435);
+                   elemLeft(canvas, 75);
                    //canvas.css("background-color", "blue");
-                   canvas.mousedown(function(){
-                                    jQuery(".selected").each(function(){
-                                                             canvasImage(jQuery(this),"images/answer-notselected.png");
-                                                             });
-                                    
-                                    canvasImage(jQuery("#a-selected-bg"),"images/answer-selected.png");
-                                    
-                                    });
+ 
                    
-                   //a-selected-bg
-                   canvas = jQuery("#a-selected-bg");
-                   canvas.addClass("scale");
-                   elemAbs(canvas);
-                   elemWH(canvas, 579,152);
-                   elemZIndex(canvas, 10);
-                   elemTop(canvas, 837);
-                   elemLeft(canvas, 123);
-                   //canvas.css("background-color", "blue");
-                   
+                  
                    //b
                    canvas = jQuery("#b");
                    canvas.addClass("scale");
                    elemAbs(canvas);
-                   elemWH(canvas, 520,90);
+                   elemWH(canvas, 260,45);
                    elemZIndex(canvas, 10);
-                   elemTop(canvas, 870 + 180);
-                   elemLeft(canvas, 150);
+                   elemTop(canvas, 435 + 90);
+                   elemLeft(canvas, 75);
                    //canvas.css("background-color", "red");
-                   canvas.mousedown(function(){
-                                    jQuery(".selected").each(function(){
-                                                             canvasImage(jQuery(this),"images/answer-notselected.png");
-                                                             });
-                                    
-                                    canvasImage(jQuery("#b-selected-bg"),"images/answer-selected.png");
-                                    
-                                    });
-                   //b-selected-bg
-                   canvas = jQuery("#b-selected-bg");
-                   canvas.addClass("scale");
-                   elemAbs(canvas);
-                   elemWH(canvas, 579,152);
-                   elemZIndex(canvas, 10);
-                   elemTop(canvas, 837 + 180);
-                   elemLeft(canvas, 122);
-                   
                    
        
                    //c
                    canvas = jQuery("#c");
                    canvas.addClass("scale");
                    elemAbs(canvas);
-                   elemWH(canvas, 520,90);
+                   elemWH(canvas, 260,45);
                    elemZIndex(canvas, 10);
-                   elemTop(canvas, 870);
-                   elemLeft(canvas, 150 + 650);
+                   elemTop(canvas, 435);
+                   elemLeft(canvas, 75 + 325);
                    //canvas.css("background-color", "pink");
-                   canvas.mousedown(function(){
-                                    jQuery(".selected").each(function(){
-                                                             canvasImage(jQuery(this),"images/answer-notselected.png");
-                                                             });
-                                    
-                                    canvasImage(jQuery("#c-selected-bg"),"images/answer-selected.png");
-                                    
-                                    });
-                   //c-selected-bg
-                   canvas = jQuery("#c-selected-bg");
-                   canvas.addClass("scale");
-                   elemAbs(canvas);
-                   elemWH(canvas, 579,152);
-                   elemZIndex(canvas, 10);
-                   elemTop(canvas, 837 );
-                   elemLeft(canvas, 123 + 649);
-                   
+                  
                    
                    //d
                    canvas = jQuery("#d");
                    canvas.addClass("scale");
                    elemAbs(canvas);
-                   elemWH(canvas, 520, 90);
+                   elemWH(canvas, 260,45);
                    elemZIndex(canvas, 10);
-                   elemTop(canvas, 870 + 180);
-                   elemLeft(canvas, 150 + 650);
+                   elemTop(canvas, 435 + 90);
+                   elemLeft(canvas, 75 + 325);
                    //canvas.css("background-color", "pink");
-                   canvas.mousedown(function(){
-                                    jQuery(".selected").each(function(){
-                                                             canvasImage(jQuery(this),"images/answer-notselected.png");
-                                                             });
-                                    
-                                    canvasImage(jQuery("#d-selected-bg"),"images/answer-selected.png");
-                                    
-                                    });
-                   //d-selected-bg
-                   canvas = jQuery("#d-selected-bg");
-                   canvas.addClass("scale");
-                   elemAbs(canvas);
-                   elemWH(canvas, 579,152);
-                   elemZIndex(canvas, 10);
-                   elemTop(canvas, 837 + 180);
-                   elemLeft(canvas, 122 + 649);
                    
                    
                    jQuery(".selected").each(function(){
@@ -479,7 +450,7 @@
                    
                    canvas = document.getElementById("number");
                    context = canvas.getContext("2d");
-                   context.font = 'bold 100pt arial ';
+                   context.font = 'bold 50pt arial ';
                    context.textAlign = 'center';
                    context.textBaseline = 'middle';
                    context.fillStyle = "white";
@@ -487,30 +458,30 @@
                    
                    canvas = document.getElementById("question");
                    text = "1. " + quizQuestions.questions[finalQuestions[current]].question;
-                   wrapText(canvas, text, 20, canvas.height/2, (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                   wrapText(canvas, text, 10, canvas.height/2, (canvas.width - 8), 18, 'bold 12pt arial ', "white");
                    console.log("question1:" + text);
                    
                    canvas = document.getElementById("a");
                    text = quizQuestions.questions[finalQuestions[current]].a;
-                   wrapText(canvas, "A. " + text, 20, (canvas.height/2 ) , (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                   wrapText(canvas, "A. " + text, 10, (canvas.height/2 ) , (canvas.width - 8), 18, 'bold 12pt arial ', "white");
                    console.log("a1:" + text);
                    
                    canvas = document.getElementById("b");
                    text = quizQuestions.questions[finalQuestions[current]].b;
-                   wrapText(canvas, "B. " + text, 20, (canvas.height/2 ) , (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                   wrapText(canvas, "B. " + text, 10, (canvas.height/2 ) , (canvas.width - 8), 18, 'bold 12pt arial ', "white");
                    console.log("b1:" + text);
                    
                    canvas = document.getElementById("c");
                    text = quizQuestions.questions[finalQuestions[current]].c;
-                   wrapText(canvas, "C. " + text, 20, (canvas.height/2 ) , (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                   wrapText(canvas, "C. " + text, 10, (canvas.height/2 ) , (canvas.width - 8), 18, 'bold 12pt arial ', "white");
                    console.log("c1:" + text);
                    
                    canvas = document.getElementById("d");
                    text = quizQuestions.questions[finalQuestions[current]].d;
-                   wrapText(canvas, "D. " + text, 20, (canvas.height/2 ), (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                   wrapText(canvas, "D. " + text, 10, (canvas.height/2 ), (canvas.width - 8), 18, 'bold 12pt arial ', "white");
                    console.log("d1:" + text);
                    
-                   jQuery(".answers").dblclick(function() {
+                   jQuery(".answers").click(function() {
                                             
                                             if (current < 15) {
                                                 console.log("current" + current);
@@ -520,14 +491,19 @@
                                                     console.log("correct! Score is " + score);
                                                     
                                                    //overlay-correct
-                                                   canvas = jQuery("#overlay-correct");
-                                                   canvas.css("display", "block");
-                                                   
+                                                  // canvas = jQuery("#overlay-correct");
+                                                  // canvas.css("display", "block");
+                                             
+                                                    globalbg.play("correct");
+                                             jQuery(".game-text-elements").each(function(){
+                                                                             jQuery(this).css("display", "none");
+                                                                              });
+                                            
                                                     if(current <= 14) {
                                             
                                                         canvas = document.getElementById("number");
                                                         context = canvas.getContext("2d");
-                                                        context.font = 'bold 100pt arial ';
+                                                        context.font = 'bold 50pt arial ';
                                                         context.textAlign = 'center';
                                                         context.textBaseline = 'middle';
                                                         context.fillStyle = "white";
@@ -536,24 +512,24 @@
                                                         
                                                         canvas = document.getElementById("question");
                                                         text = (current+1)+"."+ quizQuestions.questions[finalQuestions[current]].question;
-                                                        wrapText(canvas, text, 20, canvas.height/2, (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                                                        wrapText(canvas, text, 10, canvas.height/2, (canvas.width - 8), 18, 'bold 12pt arial ', "white");
                                                         console.log("question"+current+":" + text);
                                                         
                                                         canvas = document.getElementById("a");
                                                         text = quizQuestions.questions[finalQuestions[current]].a;
-                                                        wrapText(canvas, "A. " + text, 20, (canvas.height/2 ), (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                                                        wrapText(canvas, "A. " + text, 10, (canvas.height/2 ), (canvas.width - 8), 18, 'bold 12pt arial ', "white");
                                                         
                                                         canvas = document.getElementById("b");
                                                         text = quizQuestions.questions[finalQuestions[current]].b;
-                                                        wrapText(canvas, "B. " + text, 20, (canvas.height/2 ), (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                                                        wrapText(canvas, "B. " + text, 10, (canvas.height/2 ), (canvas.width - 8), 18, 'bold 12pt arial ', "white");
                                                         
                                                         canvas = document.getElementById("c");
                                                         text = quizQuestions.questions[finalQuestions[current]].c;
-                                                        wrapText(canvas, "C. " + text, 20, (canvas.height/2 ), (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                                                        wrapText(canvas, "C. " + text, 10, (canvas.height/2 ), (canvas.width - 8), 18, 'bold 12pt arial ', "white");
                                                         
                                                         canvas = document.getElementById("d");
                                                         text = quizQuestions.questions[finalQuestions[current]].d;
-                                                        wrapText(canvas, "D. " + text, 20, (canvas.height/2 ) , (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                                                        wrapText(canvas, "D. " + text, 10, (canvas.height/2 ) , (canvas.width - 8), 18, 'bold 12pt arial ', "white");
 
                                                     } else {
                                                         
@@ -607,14 +583,20 @@
                                                     console.log("wrong! The correct answer is " + quizQuestions.questions[finalQuestions[current]][correctAnswer] +" Score is "+ score);
                                                     
                                                    //overlay-incorrect
-                                                   canvas = jQuery("#overlay-incorrect");
+                                               /*    canvas = jQuery("#overlay-incorrect");
                                                    canvas.css("display", "block");
-                                                   
+                                                 */  
                                                    canvas = jQuery("#message-incorrect");
                                                    canvas.css("visibility", "visible");
-                                               
+                                              
+                                                    globalbg.play("wrong");
+                                                   jQuery(".game-text-elements").each(function(){
+                                                                                  jQuery(this).css("display", "none");
+                                                                     });
+                                            
+                                            
                                                    canvas = document.getElementById("message-incorrect");
-                                                   wrapText(canvas, "The correct answer is " + quizQuestions.questions[finalQuestions[current]][correctAnswer] +"." , 20, (canvas.height/2 ) - 30 , (canvas.width - 8), 45, 'bold 30pt arial ',"#613915");
+                                                   wrapText(canvas, "The correct answer is " + quizQuestions.questions[finalQuestions[current]][correctAnswer] +"." , 10, (canvas.height/2 ) - 15 , (canvas.width - 8), 23, 'bold 14pt arial ',"#613915");
                                                
                                                    current++;
                                                    
@@ -622,7 +604,7 @@
                                                 
                                                         canvas = document.getElementById("number");
                                                         context = canvas.getContext("2d");
-                                                        context.font = 'bold 100pt arial ';
+                                                        context.font = 'bold 50pt arial ';
                                                         context.textAlign = 'center';
                                                         context.textBaseline = 'middle';
                                                         context.fillStyle = "white";
@@ -631,23 +613,23 @@
                                                         
                                                         canvas = document.getElementById("question");
                                                         text = (current+1)+"."+ quizQuestions.questions[finalQuestions[current]].question;
-                                                        wrapText(canvas, text, 20, canvas.height/2, (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                                                        wrapText(canvas, text, 10, canvas.height/2, (canvas.width - 8), 18, 'bold 12pt arial ', "white");
                                                         
                                                         canvas = document.getElementById("a");
                                                         text = quizQuestions.questions[finalQuestions[current]].a;
-                                                        wrapText(canvas, "A. " + text, 20, (canvas.height/2 ) , (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                                                        wrapText(canvas, "A. " + text, 10, (canvas.height/2 ) , (canvas.width - 8), 18, 'bold 12pt arial ', "white");
                                                         
                                                         canvas = document.getElementById("b");
                                                         text = quizQuestions.questions[finalQuestions[current]].b;
-                                                        wrapText(canvas, "B. " + text, 20, (canvas.height/2 ) , (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                                                        wrapText(canvas, "B. " + text, 10, (canvas.height/2 ) , (canvas.width - 8), 18, 'bold 12pt arial ', "white");
                                                         
                                                         canvas = document.getElementById("c");
                                                         text = quizQuestions.questions[finalQuestions[current]].c;
-                                                        wrapText(canvas, "C. " + text, 20, (canvas.height/2 ), (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                                                        wrapText(canvas, "C. " + text, 10, (canvas.height/2 ), (canvas.width - 8), 18, 'bold 12pt arial ', "white");
                                                         
                                                         canvas = document.getElementById("d");
                                                         text = quizQuestions.questions[finalQuestions[current]].d;
-                                                        wrapText(canvas, "D. " + text, 20, (canvas.height/2 ) , (canvas.width - 8), 35, 'bold 25pt arial ', "white");
+                                                        wrapText(canvas, "D. " + text, 10, (canvas.height/2 ) , (canvas.width - 8), 18, 'bold 12pt arial ', "white");
                                                         
                                                     } else {
                                                         
@@ -667,7 +649,7 @@
                                                        canvas.css("visibility", "visible");
                                                        canvas = document.getElementById("score-correct");
                                                        context = canvas.getContext("2d");
-                                                       context.font = 'bold 50pt arial ';
+                                                       context.font = 'bold 25pt arial ';
                                                        context.textAlign = 'center';
                                                        context.textBaseline = 'middle';
                                                        context.fillStyle = "#d91b01";
@@ -677,7 +659,7 @@
                                                        canvas.css("visibility", "visible");
                                                        canvas = document.getElementById("score-incorrect");
                                                        context = canvas.getContext("2d");
-                                                       context.font = 'bold 50pt arial ';
+                                                       context.font = 'bold 25pt arial ';
                                                        context.textAlign = 'center';
                                                        context.textBaseline = 'middle';
                                                        context.fillStyle = "#d91b01";
@@ -685,7 +667,7 @@
                                                        
                                                        canvas = document.getElementById("score-title");
                                                        context = canvas.getContext("2d");
-                                                       context.font = 'bold 60pt arial ';
+                                                       context.font = 'bold 30pt arial ';
                                                        context.textAlign = 'center';
                                                        context.textBaseline = 'middle';
                                                        context.fillStyle = "#d91b01";
@@ -722,20 +704,18 @@
     <body style="margin: 0px;">
         <div id="nmgcontainer">
             <canvas id="background"></canvas>
-            <canvas id="home"></canvas>
-            <canvas id="number"></canvas>
-            <canvas id="question"></canvas>
-            <canvas id="a-selected-bg" class="selected"></canvas>
-            <canvas id="b-selected-bg" class="selected"></canvas>
-            <canvas id="c-selected-bg" class="selected"></canvas>
-            <canvas id="d-selected-bg" class="selected"></canvas>
-            <canvas id="a" class="answers"></canvas>
-            <canvas id="b" class="answers"></canvas>
-            <canvas id="c" class="answers"></canvas>
-            <canvas id="d" class="answers"></canvas>
+            <canvas id="home" class="game-text-elements"></canvas>
+            <canvas id="number" class="game-text-elements"></canvas>
+            <canvas id="question" class="game-text-elements"></canvas>
+            <canvas id="a" class="answers game-text-elements"></canvas>
+            <canvas id="b" class="answers game-text-elements"></canvas>
+            <canvas id="c" class="answers game-text-elements"></canvas>
+            <canvas id="d" class="answers game-text-elements"></canvas>
+            
             <canvas id="overlay-correct"></canvas>
             <canvas id="overlay-incorrect"></canvas>
             <canvas id="message-incorrect"></canvas>
+            
             <canvas id="score-bg"></canvas>
             <canvas id="score-correct"></canvas>
             <canvas id="score-incorrect"></canvas>

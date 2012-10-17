@@ -20,32 +20,57 @@
                 
             }
             document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+            var globalbg;
             jQuery(function(){
                    //nmgcontainer
                    div = jQuery("#nmgcontainer");
                    div.addClass("scale");
                    elemAbs(div);
-                   elemWH(div, 2048, 1536);
+                   elemWH(div, 1024, 768);
                    
                    //background
                    canvas = jQuery("#background");
                    canvas.addClass("scale");
                    elemAbs(canvas);
-                   canvasImage(canvas,"images/photoapp-male-parmesan-crusted-fish.jpg");
-                   elemWH(canvas, 2048, 1536);
+                   //canvasImage(canvas,"images/photoapp-male-parmesan-crusted-fish.jpg");
+                   elemWH(canvas, 1024, 768);
                    elemZIndex(canvas, 10);
+                   
+                   json = {
+                   "images": ["images/photoapp-frames.png"],
+                   "animations": {
+                   "all": [0, 5],
+                   "photoapp-male-parmesan-crusted-fish": [0],
+                   "photoapp-male-chicken-scaloppine-with-spinach-and-linguine": [1],
+                   "photoapp-male-sherry-apple-pork-chops": [2],
+                   "photoapp-female-parmesan-crusted-fish": [3],
+                   "photoapp-female-chicken-scaloppine-with-spinach-and-linguine": [4],
+                   "photoapp-female-sherry-apple-pork-chops": [5]
+                   },
+                   "frames": {
+                   "width": 1024,
+                   "height": 768,
+                   "count": 6,
+                   "regX": 0,
+                   "regY": 0
+                   
+                   }
+                   };
+                   globalbg = new mm_animation("background", json); 
+                   globalbg.play("photoapp-male-parmesan-crusted-fish"); //if this code doesnt work use this...  globalbg._anim.gotoAndPlay(where);
+                   
                    
                    //home
                    canvas = jQuery("#home");
                    canvas.addClass("scale");
                    elemAbs(canvas);
-                   elemWH(canvas, 120,108);
+                   elemWH(canvas, 60,54);
                    elemZIndex(canvas, 10);
                    canvasImage(canvas,"images/home-button.png");
                    elemRightAlign(canvas);
                    elemBottomAlign(canvas);
-                   elemBottom(canvas, 40);
-                   elemRight(canvas, 40);
+                   elemBottom(canvas, 15);
+                   elemRight(canvas, 15);
                    //canvas.css("background-color", "blue");
                    elemLink(canvas,"index.html");
                    
@@ -53,38 +78,25 @@
                    div.addClass("scale");
                    elemAbs(div);
                    elemZIndex(div, 10);
-                   elemWH(div, 900, 50);
-                   elemTop(div, 1000);
-                   elemLeft(div, 850);
+                   elemWH(div, 450, 50);
+                   elemTop(div, 490);
+                   elemLeft(div, 440);
                    div.css("color", "white");
-                   div.css("font-size", "50px");
+                   div.css("font-size", "20px");
                    div.css("font-family", "Arial");
                    div.css("text-align", "center");
                    div.css("vertical-aligh","middle");
                    //div.css("background-color", "blue");
                    
-                   /*
-                   div = jQuery("#dish-container");
-                   div.addClass("scale");
-                   elemAbs(div);
-                   elemZIndex(div, 10);
-                   elemWH(div, 900, 50);
-                   elemTop(div, 660);
-                   elemLeft(div, 400);
-                   div.css("color", "white");
-                   div.css("font-size", "24px");
-                   div.css("font-family", "Arial");
-                   div.css("vertical-aligh","middle");
-                   */
+                   
                    
                    div = jQuery(".dish-inner-container");
                    div.addClass("scale");
                    elemAbs(div);
                    elemZIndex(div, 10);
                    elemWH(div, 200, 50);
-                   //div.css("color", "white");
                    div.css("color", "white");
-                   div.css("font-size", "50px");
+                   div.css("font-size", "20px");
                    div.css("font-family", "Arial");
                    div.css("vertical-aligh","middle");
                    //div.css("background-color", "blue");
@@ -93,36 +105,36 @@
                    div.addClass("scale");
                    elemAbs(div);
                    elemZIndex(div, 10);
-                   elemWH(div, 500, 50);
-                   elemTop(div, 1080);
-                   elemLeft(div, 580);
+                   elemWH(div, 230, 25);
+                   elemTop(div, 560);
+                   elemLeft(div, 280);
                    
                    div = jQuery("#dish-1-container");
                    div.addClass("scale");
                    elemAbs(div);
                    elemZIndex(div, 10);
-                   elemWH(div, 450, 50);
-                   elemTop(div, 1080 + 70);
-                   elemLeft(div, 580);
-                   //div.css("background-color", "green");
+                   elemWH(div, 230, 50);
+                   elemTop(div, 540 + 70);
+                   elemLeft(div, 280);
+                   //div.css("background-color", "blue");
                    
                    div = jQuery("#dish-2-container");
                    div.addClass("scale");
                    elemAbs(div);
                    elemZIndex(div, 10);
-                   elemWH(div, 450, 50);
-                   elemTop(div, 1080 + 70);
-                   elemLeft(div, 580 + 480);
+                   elemWH(div, 230, 50);
+                   elemTop(div, 540 + 70);
+                   elemLeft(div, 280 + 245);
                    //div.css("background-color", "green");
                    
                    div = jQuery("#dish-3-container");
                    div.addClass("scale");
                    elemAbs(div);
                    elemZIndex(div, 10);
-                   elemWH(div, 450, 50);
-                   elemTop(div, 1080 + 70);
-                   elemLeft(div,580 + 480 + 480);
-                   //div.css("background-color", "green");
+                   elemWH(div, 230, 50);
+                   elemTop(div, 540 + 70);
+                   elemLeft(div,280 + 245 + 245);
+                   //div.css("background-color", "yellow");
                    
                    
                    
@@ -139,25 +151,14 @@
                                            gender = jQuery(this).attr("id");
                                            dish = jQuery("input[name=dish]:checked").attr("id");
                                            
-                                           //background
-                                           canvas = jQuery("#background");
-                                           elemAbs(canvas);
-                                           canvasImage(canvas,"images/photoapp-"+gender+"-"+dish+".jpg");
-                                           elemWH(canvas, 2048, 1536);
-                                           elemZIndex(canvas, 10);
-                                           elemScale(canvas);
+                                           globalbg.play("photoapp-"+gender+"-"+dish); //if this code doesnt work use this...  globalbg._anim.gotoAndPlay(where);
+                                           
                                            });
                    jQuery(".dish").click(function(){
                                            dish = jQuery(this).attr("id");
                                            gender = jQuery("input[name=gender]:checked").attr("id");
-                                           
-                                           //background
-                                           canvas = jQuery("#background");
-                                           elemAbs(canvas);
-                                           canvasImage(canvas,"images/photoapp-"+gender+"-"+dish+".jpg");
-                                           elemWH(canvas, 2048, 1536);
-                                           elemZIndex(canvas, 10);
-                                           elemScale(canvas);
+                
+                                           globalbg.play("photoapp-"+gender+"-"+dish); //if this code doesnt work use this...  globalbg._anim.gotoAndPlay(where);
                                            });
                    
                    

@@ -15,7 +15,7 @@ function tick() {
 }
 Ticker.addListener(window);
 //divisor = window.devicePixelRatio;
-if(window.devicePixelRatio&&0){ //tempporarily disable
+if(window.devicePixelRatio){ //tempporarily disable
 	PIXELRATIO = window.devicePixelRatio;
 }
 else{
