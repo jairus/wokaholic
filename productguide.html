@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!--<link href="css/style.css" type="text/css" rel="stylesheet" /> -->
+        <script src="js/jquery-1.7.2.min.js" language="javascript"></script>
+        <script src="js/easeljs-0.4.2.min.js" language="javascript"></script>
+        <script src="js/iscroll.js" language="javascript"></script>
+        <script src="js/_nmg.js" language="javascript"></script>
+        <style>
+            body {
+                font-family: Arial;
+            }
+            ul.tabs {
+                list-style-type: none;
+                padding: 0;
+                top: 77px;
+                left: 10px;
+                z-index: 100;
+                position: absolute;
+                
+            }
+            
+            ul.tabs li {
+                float: left;
+                
+                margin: 0;
+                background-color: #a11a20;
+                margin-right: 1px;
+                text-align: center;
+                font-size: 20px;
+                display: block;
+                padding: 8px;
+                color: white;
+                text-decoration: none;
+            }
+            
+            ul.tabs li:hover , ul.tabs li.current {
+                color: white;
+                background-color: black;
+                cursor: pointer;
+            }
+            
+            .product-menu {
+                font-size: 14px;
+            }
+            
+            
+            
+            </style>
+        <script language="javascript">
+            
+            //document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false); //preventing the pinch zoom et al
+            var myScroll;
+            
+            function loaded() {
+                myScroll = new iScroll('wrapper');
+                
+                wrapper = jQuery("#wrapper");
+                elemAnimateIn(wrapper); // animate the contents of the wrapper
+                
+            }
+            document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+            
+            
+            
+            function changeInfoContent(info){
+                
+                jQuery(".product-current").each(function(){
+                                                product = jQuery(this).attr("id");
+                                                });
+                
+                canvas = jQuery("#content");
+                elemAbs(canvas);
+                elemWH(canvas, 1260,625);
+                elemZIndex(canvas, 10);
+                canvasImage(canvas,"images/"+product+"-"+info+".png");
+                elemTop(canvas, 165);
+                elemLeft(canvas, 10);
+                elemScale(canvas);
+                jQuery(".tabs li").each(function(){
+                                        jQuery(this).removeClass("info-current");
+                                        });
+                
+                jQuery("#"+info).addClass("info-current");
+                
+                
+            }
+            
+            function changeProductContent(product){
+                
+                jQuery(".info-current").each(function(){
+                                             info = jQuery(this).attr("id");
+                                             });
+                
+                canvas = jQuery("#content");
+                elemAbs(canvas);
+                elemWH(canvas, 1260,625);
+                elemZIndex(canvas, 10);
+                canvasImage(canvas,"images/"+product+"-"+info+".png");
+                elemTop(canvas, 165);
+                elemLeft(canvas, 10);
+                elemScale(canvas);
+                jQuery(".product-menu").each(function(){
+                                             jQuery(this).removeClass("product-current");
+                                             });
+                
+                jQuery("#"+product).addClass("product-current");
+                var text;
+                switch(product) {
+                    case "free-standing-cookers":
+                        text = "Free Standing Cookers";
+                        break;
+                    case "built-in-ovens":
+                        text = "Built-in Ovens";
+                        break;
+                    case "hobs":
+                        text = "Hobs";
+                        break;
+                    case "hoods":
+                        text = "Hoods";
+                        break;
+                    case "microwave-ovens":
+                        text = "Microwave Ovens";
+                        break;
+                    case "dishwasher":
+                        text = "Dishwasher";
+                        break;
+                }
+                jQuery("#main").html(text);
+            }
+            jQuery(function(){
+                   /*//nmgcontainer
+                   div = jQuery("#nmgcontainer");
+                   div.addClass("scale");
+                   elemAbs(div);
+                   elemWH(div, 1280, 800);
+                   div.css("background-color", "#276eff");
+                   div.css("background", "url(images/productspecification.jpg)");
+                   */
+                   
+                    
+                    //nmgcontainer
+                    div = jQuery("#nmgcontainer");
+                    div.addClass("scale");
+                    elemAbs(div);
+                    elemWH(div, 1280, 800);
+                    
+                    //background
+                    canvas = jQuery("#background");
+                    canvas.addClass("scale");
+                    elemAbs(canvas);
+                    canvasImage(canvas,"images/productspecification.jpg");
+                    elemWH(canvas, 1024, 768);
+                    elemZIndex(canvas, 1);
+                    
+                   //nmgcontainer
+                   div = jQuery("#tab-menu");
+                   //div.addClass("scale");
+                   elemAbs(div);
+                   
+                   //home
+                   canvas = jQuery("#home");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 60,54);
+                   elemZIndex(canvas, 10);
+                   canvasImage(canvas,"images/home-button.png");
+                   //elemRightAlign(canvas);
+                   //elemBottomAlign(canvas);
+                   //elemBottom(canvas, 15);
+                   elemTop(canvas, 15);
+                   elemLeft(canvas, 15);
+                   //canvas.css("background-color", "blue");
+                   elemLink(canvas,"index.html");
+                   
+                   //free-standing-cookers
+                   canvas = jQuery("#free-standing-cookers");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 150,34);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas, 11);
+                   elemLeft(canvas, 310);
+                   //canvas.css("background-color", "blue");
+                   //canvas.css("opacity", "0.5");
+                   elemLink(canvas,"#");
+                   
+                   
+                   //built-in-ovens
+                   canvas = jQuery("#built-in-ovens");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 90,34);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas, 11);
+                   elemLeft(canvas, 320 + 180);
+                   //canvas.css("background-color", "pink");
+                   //canvas.css("opacity", "0.5");
+                   elemLink(canvas,"#");
+                   
+                   
+                   //hobs
+                   canvas = jQuery("#hobs");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 40,34);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas, 11);
+                   elemLeft(canvas, 320 + 180 + 110);
+                   //canvas.css("background-color", "orange");
+                   //canvas.css("opacity", "0.5");
+                   elemLink(canvas,"#");
+                   
+                   //hoods
+                   canvas = jQuery("#hoods");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 50,34);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas, 11);
+                   elemLeft(canvas, 320 + 180 + 120 + 60);
+                   //canvas.css("background-color", "green");
+                   //canvas.css("opacity", "0.5");
+                   elemLink(canvas,"#");
+                   
+                   //microwave-ovens
+                   canvas = jQuery("#microwave-ovens");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 130,34);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas, 11);
+                   elemLeft(canvas, 320 + 180 + 110 + 60 + 70);
+                   //canvas.css("background-color", "yellow");
+                   //canvas.css("opacity", "0.5");
+                   elemLink(canvas,"#");
+                   
+                   //dishwasher
+                   canvas = jQuery("#dishwasher");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 111,34);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas, 11);
+                   elemLeft(canvas, 320 + 170 + 110 + 60 + 70 + 150);
+                   //canvas.css("background-color", "blue");
+                   //canvas.css("opacity", "0.5");
+                   elemLink(canvas,"#");
+                   
+                   //content
+                   canvas = jQuery("#content");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 1260,625);
+                   elemZIndex(canvas, 10);
+                   canvasImage(canvas,"images/free-standing-cookers-specs.png");
+                   elemTop(canvas, 165);
+                   elemLeft(canvas, 10);
+                   //canvas.css("background-color", "blue");
+                   //canvas.css("opacity", "0.5");
+                   
+                   //scaling
+                   jQuery("ul.tabs").each(function(){
+                                             elemScale(jQuery(this));
+                                             }
+                                             );
+                   
+                   //scaling
+                   jQuery("ul.tabs li").each(function(){
+                                         elemScale(jQuery(this));
+                                         }
+                                         );
+                   
+                   
+                   //scaling
+                   jQuery(".scale").each(function(){
+                                         elemScale(jQuery(this));
+                                         }
+                                         );
+                   
+                   jQuery("#nmgcontainer").css("visibility", "visible");
+                   
+                   
+                   /*** EVENTS ****/
+                   jQuery(".tabs").click(function(e){
+                                         changeInfoContent(e.target.id);
+                                         });
+                   jQuery(".product-menu").click(function(e){
+                                                 changeProductContent(e.target.id);
+                                                 });
+                   });
+            </script>
+        
+        
+        <title>Wok-A-Holic</title>
+    </head>
+    <body style="margin: 0px;">
+        <div id="nmgcontainer">
+            <canvas id="background"></canvas>
+            <div id="free-standing-cookers"class="product-menu product-current">Free Standing Cookers</div>
+            <div id="built-in-ovens" class="product-menu" >Built-in Ovens</div>
+            <div id="hobs" class="product-menu" >Hobs</div>
+            <div id="hoods" class="product-menu" >Hoods</div>
+            <div id="microwave-ovens" class="product-menu" >Microwave Ovens</div>
+            <div id="dishwasher" class="product-menu" >Dishwasher</div>
+            <canvas id="home"></canvas>
+            
+            <ul class="tabs" id="tab-menu">
+                <li id="main" class="info-current">Free Standing Cooker</li>
+                <li id="gallery">Gallery</li>
+                <li id="specs" >Product Specification</li>
+            </ul>
+            
+            <canvas id="content"></canvas>
+            
+        </div>
+        
+    </body>
+</html>
