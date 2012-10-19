@@ -93,13 +93,25 @@
                                              info = jQuery(this).attr("id");
                                              });
                 
-                canvas = jQuery("#content");
+                /*canvas = jQuery("#content");
                 elemAbs(canvas);
                 elemWH(canvas, 1260,625);
                 elemZIndex(canvas, 10);
                 canvasImage(canvas,"images/"+product+"-"+info+".png");
                 elemTop(canvas, 165);
                 elemLeft(canvas, 10);
+                elemScale(canvas);
+                jQuery(".product-menu").each(function(){
+                                             jQuery(this).removeClass("product-current");
+                                             });
+                */
+                canvas = jQuery("#background");
+                elemAbs(canvas);
+                elemWH(canvas, 1024, 768);
+                elemZIndex(canvas, 10);
+                canvasImage(canvas,"images/"+product+"-"+info+".png");
+                //elemTop(canvas, 165);
+                //elemLeft(canvas, 10);
                 elemScale(canvas);
                 jQuery(".product-menu").each(function(){
                                              jQuery(this).removeClass("product-current");
@@ -150,7 +162,7 @@
                     canvas = jQuery("#background");
                     canvas.addClass("scale");
                     elemAbs(canvas);
-                    canvasImage(canvas,"images/productspecification.jpg");
+                    canvasImage(canvas,"images/free-standing-cookers-main.png");
                     elemWH(canvas, 1024, 768);
                     elemZIndex(canvas, 1);
                     
@@ -178,10 +190,10 @@
                    canvas = jQuery("#free-standing-cookers");
                    canvas.addClass("scale");
                    elemAbs(canvas);
-                   elemWH(canvas, 150,34);
+                   elemWH(canvas, 140,34);
                    elemZIndex(canvas, 10);
                    elemTop(canvas, 11);
-                   elemLeft(canvas, 310);
+                   elemLeft(canvas, 340);
                    //canvas.css("background-color", "blue");
                    //canvas.css("opacity", "0.5");
                    elemLink(canvas,"#");
@@ -191,10 +203,10 @@
                    canvas = jQuery("#built-in-ovens");
                    canvas.addClass("scale");
                    elemAbs(canvas);
-                   elemWH(canvas, 90,34);
+                   elemWH(canvas, 110,34);
                    elemZIndex(canvas, 10);
                    elemTop(canvas, 11);
-                   elemLeft(canvas, 320 + 180);
+                   elemLeft(canvas, 340 + 150);
                    //canvas.css("background-color", "pink");
                    //canvas.css("opacity", "0.5");
                    elemLink(canvas,"#");
@@ -204,10 +216,10 @@
                    canvas = jQuery("#hobs");
                    canvas.addClass("scale");
                    elemAbs(canvas);
-                   elemWH(canvas, 40,34);
+                   elemWH(canvas, 65,34);
                    elemZIndex(canvas, 10);
                    elemTop(canvas, 11);
-                   elemLeft(canvas, 320 + 180 + 110);
+                   elemLeft(canvas, 340 + 150 + 120);
                    //canvas.css("background-color", "orange");
                    //canvas.css("opacity", "0.5");
                    elemLink(canvas,"#");
@@ -216,10 +228,10 @@
                    canvas = jQuery("#hoods");
                    canvas.addClass("scale");
                    elemAbs(canvas);
-                   elemWH(canvas, 50,34);
+                   elemWH(canvas, 60,34);
                    elemZIndex(canvas, 10);
                    elemTop(canvas, 11);
-                   elemLeft(canvas, 320 + 180 + 120 + 60);
+                   elemLeft(canvas, 340 + 150 + 120 + 75);
                    //canvas.css("background-color", "green");
                    //canvas.css("opacity", "0.5");
                    elemLink(canvas,"#");
@@ -231,7 +243,7 @@
                    elemWH(canvas, 130,34);
                    elemZIndex(canvas, 10);
                    elemTop(canvas, 11);
-                   elemLeft(canvas, 320 + 180 + 110 + 60 + 70);
+                   elemLeft(canvas, 340 + 150 + 120 + 75 + 70);
                    //canvas.css("background-color", "yellow");
                    //canvas.css("opacity", "0.5");
                    elemLink(canvas,"#");
@@ -240,10 +252,10 @@
                    canvas = jQuery("#dishwasher");
                    canvas.addClass("scale");
                    elemAbs(canvas);
-                   elemWH(canvas, 111,34);
+                   elemWH(canvas, 115,34);
                    elemZIndex(canvas, 10);
                    elemTop(canvas, 11);
-                   elemLeft(canvas, 320 + 170 + 110 + 60 + 70 + 150);
+                   elemLeft(canvas, 340 + 150 + 120 + 75 + 70 + 140);
                    //canvas.css("background-color", "blue");
                    //canvas.css("opacity", "0.5");
                    elemLink(canvas,"#");
@@ -298,12 +310,12 @@
     <body style="margin: 0px;">
         <div id="nmgcontainer">
             <canvas id="background"></canvas>
-            <div id="free-standing-cookers"class="product-menu product-current">Free Standing Cookers</div>
-            <div id="built-in-ovens" class="product-menu" >Built-in Ovens</div>
-            <div id="hobs" class="product-menu" >Hobs</div>
-            <div id="hoods" class="product-menu" >Hoods</div>
-            <div id="microwave-ovens" class="product-menu" >Microwave Ovens</div>
-            <div id="dishwasher" class="product-menu" >Dishwasher</div>
+            <div id="free-standing-cookers"class="product-menu product-current"></div>
+            <div id="built-in-ovens" class="product-menu" ></div>
+            <div id="hobs" class="product-menu" ></div>
+            <div id="hoods" class="product-menu" ></div>
+            <div id="microwave-ovens" class="product-menu" ></div>
+            <div id="dishwasher" class="product-menu" ></div>
             <canvas id="home"></canvas>
             
             <ul class="tabs" id="tab-menu">
