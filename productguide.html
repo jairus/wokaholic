@@ -70,13 +70,22 @@
                                                 product = jQuery(this).attr("id");
                                                 });
                 
-                canvas = jQuery("#content");
+                /*canvas = jQuery("#content");
                 elemAbs(canvas);
                 elemWH(canvas, 1260,625);
                 elemZIndex(canvas, 10);
                 canvasImage(canvas,"images/"+product+"-"+info+".png");
                 elemTop(canvas, 165);
                 elemLeft(canvas, 10);
+                elemScale(canvas);
+                */
+                canvas = jQuery("#background");
+                elemAbs(canvas);
+                elemWH(canvas, 1024, 768);
+                elemZIndex(canvas, 10);
+                canvasImage(canvas,"images/"+product+"-"+info+".png");
+                //elemTop(canvas, 165);
+                //elemLeft(canvas, 10);
                 elemScale(canvas);
                 jQuery(".tabs li").each(function(){
                                         jQuery(this).removeClass("info-current");
@@ -323,9 +332,9 @@
                 <li id="gallery">Gallery</li>
                 <li id="specs" >Product Specification</li>
             </ul>
-            
+            <!--
             <canvas id="content"></canvas>
-            
+            -->
         </div>
         
     </body>
