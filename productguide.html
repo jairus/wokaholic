@@ -124,12 +124,19 @@
                 
                 jQuery("#"+info).addClass("info-current");
                 
+                
                 switch (product) {
-                    case "dishwasher":
-                    product = "dishwasher-compact";
-                    
-                    break;
-                    
+                    case "dishwasher": {
+                        product = "dishwasher-compact";
+                        break;
+                    }
+                    case "free-standing-cookers": {
+                        if (info=="gallery") {
+                            console.log("change default gallery");
+                            info = "gallery-ss-50";
+                        }
+                        break;
+                    }
                 }
                 console.log("changeInfoContent"+product);
                 canvas = jQuery("#background");
@@ -168,8 +175,16 @@
                     case "dishwasher-builtin":
                         jQuery("#dishwasher-submenu").css("visibility","visible");
                         break;
-                    default:
+                    case "free-standing-cookers": {
                         jQuery("#dishwasher-submenu").css("visibility","hidden");
+                        jQuery("#gallery-submenu").css("visibility","visible");
+                        var submenu = "<li><a href='#' >Stainless Steel</a><ul><li><a id='gallery-ss-50' href='#'>50cm</a></li><li><a id='gallery-ss-60' href='#'>60cm</a></li><li><a id='gallery-ss-90' href='#'>90cm</a></li></ul></li><li><a href='#'>Black Series</a><ul><li><a id='gallery-bs-50' href='#'>50cm</a></li></ul></li>";
+                        jQuery("#gallery-submenu").html(submenu);
+                        break;
+                    }
+                        default:
+                        jQuery("#dishwasher-submenu").css("visibility","hidden");
+                        jQuery("#gallery-submenu").html("");
                         break;
                 }
                 console.log("changeProductContent"+product);
@@ -413,19 +428,19 @@
             <ul id="tab-menu" class="tabs">
                 <li ><a href="#" id="main">Hobs</a></li>
                 <li><a href="#" id="gallery">Gallery</a>
-                    <ul>
+                    <ul id="gallery-submenu">
                         <li><a href="#">Stainless Steel</a>
                             <ul>
-                                <li><a href="#">50 cm</a></li>
-                                <li><a href="#">60 cm</a></li>
-                                <li><a href="#">90 cm</a></li>
+                                <li><a id='gallery-ss-50' href="#">50 cm</a></li>
+                                <li><a id='gallery-ss-60' href="#">60 cm</a></li>
+                                <li><a id='gallery-ss-90' href="#">90 cm</a></li>
                             </ul>
                         </li>
                         <li><a href="#">Black Series</a>
                             <ul>
-                                <li><a href="#">50 cm</a></li>
+                                <li><a id='gallery-bs-50' href="#">50 cm</a></li> 
                             </ul>
-                        </li>
+                        </li> 
                     </ul></li>
                 <li><a href="#" id="specs">Product Specification</a></li>
             </ul>
