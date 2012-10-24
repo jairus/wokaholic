@@ -11,36 +11,81 @@
             body {
                 font-family: Arial;
             }
-            ul.tabs {
-                list-style-type: none;
-                padding: 0;
-                top: 77px;
+           
+            
+            #tab-menu, #tab-menu ul{
+                margin:0;
+                padding:0;
+                list-style-type:none;
+                list-style-position:outside;
+                position:relative;
+                line-height:1.5em;
+                font-size: 20px;
+                font-family: Arial;
+                top: 101px;
                 left: 10px;
                 z-index: 100;
                 position: absolute;
-                
             }
             
-            ul.tabs li {
-                float: left;
-                
-                margin: 0;
-                background-color: #a11a20;
-                margin-right: 1px;
+            #tab-menu a:link, #tab-menu a:active, #tab-menu a:visited{
+                display:block;
+                padding:0px 5px;
+                color:#fff;
+                text-decoration:none;
+                background-color:#a11a20;
+            }
+            
+            #tab-menu a:hover{
+                background-color:black;
+                color:white;
+            }
+            
+            #tab-menu li ul li a:link, #tab-menu li ul li a:active, #tab-menu li ul li a:visited{
+                color:#fff;
+                background-color:#c2c2c2;
+            }
+            #tab-menu li ul li a:hover{
+                background-color:#828282;
+                color:white;
+            }
+            
+            #tab-menu li{
+                width:220px;
+                float:left;
                 text-align: center;
-                font-size: 20px;
-                display: block;
-                padding: 8px;
-                color: white;
-                text-decoration: none;
+                position:relative;
+                
             }
             
-            ul.tabs li:hover , ul.tabs li.current {
-                color: white;
-                background-color: black;
-                cursor: pointer;
+            #tab-menu ul {
+                position:absolute;
+                width:12em;
+                top:1.5em;
+                display:none;
+                
             }
             
+            #tab-menu li ul a{
+                width:12em;
+                float:left;
+            }
+            
+            #tab-menu ul ul{
+                top:auto;
+            }
+            
+            #tab-menu li ul ul {
+                left:12em;
+                margin:0px 0 0 10px;
+            }
+            
+            #tab-menu li:hover ul ul, #tab-menu li:hover ul ul ul, #tab-menu li:hover ul ul ul ul{
+                display:none;
+            }
+            #tab-menu li:hover ul, #tab-menu li li:hover ul, #tab-menu li li li:hover ul, #tab-menu li li li li:hover ul{
+                display:block;
+            }
             .product-menu {
                 font-size: 14px;
             }
@@ -48,23 +93,6 @@
             #nmgcontainer #dish-menu #dishwasher-submenu{
                 visibility: hidden;
             }
-            
-            /*
-            #nmgcontainer #dish-menu  {
-                background-color: green;
-            }
-            #nmgcontainer #dish-menu #dishwasher{
-                visibility: visible;
-            } 
-            #nmgcontainer #dish-menu #dishwasher-submenu {
-                visibility: hidden;
-            }
-            
-            #nmgcontainer #dish-menu:hover #dishwasher-submenu{
-                visibility: visible;
-            }
-           
-            */
             
             
             </style>
@@ -157,7 +185,7 @@
                 var text;
                 switch(product) {
                     case "free-standing-cookers":
-                        text = "Free Standing Cookers";
+                        text = "Cooking Ranges";
                         break;
                     case "built-in-ovens":
                         text = "Built-in Ovens";
@@ -177,17 +205,18 @@
                 }
                 jQuery("#main").html(text);
             }
+            function mainmenu(){
+                jQuery(" #tab-menu ul ").css({display: "none"}); // Opera Fix
+                jQuery(" #tab-menu li").hover(function(){
+                                         jQuery(this).find('ul:first').css({visibility: "visible",display: "none"}).show();
+                                         },function(){
+                                         jQuery(this).find('ul:first').css({visibility: "hidden"});
+                                         });
+            }
             
             jQuery(function(){
-                   /*//nmgcontainer
-                   div = jQuery("#nmgcontainer");
-                   div.addClass("scale");
-                   elemAbs(div);
-                   elemWH(div, 1280, 800);
-                   div.css("background-color", "#276eff");
-                   div.css("background", "url(images/productspecification.jpg)");
-                   */
                    
+                     mainmenu();
                     
                     //nmgcontainer
                     div = jQuery("#nmgcontainer");
@@ -326,18 +355,7 @@
                    //canvas.css("opacity", "0.5");
                    elemLink(canvas,"#");
                    
-                  /* //dishwasher-submenu
-                   canvas = jQuery("#dishwasher-submenu");
-                   canvas.addClass("scale");
-                   elemAbs(canvas);
-                   elemWH(canvas, 100,34);
-                   elemZIndex(canvas, 10);
-                   elemTop(canvas, 11 + 38);
-                   elemLeft(canvas, 340 + 150 + 120 + 75 + 70 + 140 + 19);
-                   canvas.css("background-color", "#c2c2c2");
-                   //canvas.css("opacity", "0.5");
-                   elemLink(canvas,"#");
-                   */
+                  
                    
                    //content
                    canvas = jQuery("#content");
@@ -350,18 +368,6 @@
                    elemLeft(canvas, 10);
                    //canvas.css("background-color", "blue");
                    //canvas.css("opacity", "0.5");
-                   
-                   //scaling
-                   jQuery("ul.tabs").each(function(){
-                                             elemScale(jQuery(this));
-                                             }
-                                             );
-                   
-                   //scaling
-                   jQuery("ul.tabs li").each(function(){
-                                         elemScale(jQuery(this));
-                                         }
-                                         );
                    
                    
                    //scaling
@@ -403,14 +409,26 @@
             </div>
             <canvas id="home"></canvas>
             
-            <ul class="tabs" id="tab-menu">
-                <li id="main" class="info-current">Free Standing Cooker</li>
-                <li id="gallery">Gallery</li>
-                <li id="specs" >Product Specification</li>
+            
+            <ul id="tab-menu" class="tabs">
+                <li ><a href="#" id="main">Hobs</a></li>
+                <li><a href="#" id="gallery">Gallery</a>
+                    <ul>
+                        <li><a href="#">Stainless Steel</a>
+                            <ul>
+                                <li><a href="#">50 cm</a></li>
+                                <li><a href="#">60 cm</a></li>
+                                <li><a href="#">90 cm</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Black Series</a>
+                            <ul>
+                                <li><a href="#">50 cm</a></li>
+                            </ul>
+                        </li>
+                    </ul></li>
+                <li><a href="#" id="specs">Product Specification</a></li>
             </ul>
-            <!--
-            <canvas id="content"></canvas>
-            -->
         </div>
         
     </body>
