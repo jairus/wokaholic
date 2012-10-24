@@ -122,8 +122,13 @@
                                         jQuery(this).removeClass("info-current");
                                         });
                 
-                jQuery("#"+info).addClass("info-current");
-                
+                if (info.search("main") >= 0) {
+                    jQuery("#main").addClass("info-current");
+                } else if (info.search("gallery") >= 0) {
+                    jQuery("#gallery").addClass("info-current");
+                } else if (info.search("specs") >= 0) {
+                    jQuery("#specs").addClass("info-current");
+                }
                 
                 switch (product) {
                     case "dishwasher": {
