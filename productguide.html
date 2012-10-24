@@ -135,6 +135,9 @@
                             console.log("change default gallery");
                             info = "gallery-ss-50";
                         }
+                        if (info=="specs") {
+                            info = "specs-ss";
+                        }
                         break;
                     }
                 }
@@ -442,7 +445,11 @@
                             </ul>
                         </li> 
                     </ul></li>
-                <li><a href="#" id="specs">Product Specification</a></li>
+                <li><a href="#" id="specs">Product Specification</a>
+                    <ul id="specs-submenu">
+                        <li><a id='specs-ss' href="#">Stainless Steel</a></li>
+                        <li><a id='specs-bs' href="#">Black Series</a></li>
+                    </ul></li>
             </ul>
         </div>
         
