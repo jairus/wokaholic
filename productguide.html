@@ -186,13 +186,16 @@
                     case "free-standing-cookers": {
                         jQuery("#dishwasher-submenu").css("visibility","hidden");
                         jQuery("#gallery-submenu").css("visibility","visible");
-                        var submenu = "<li><a href='#' >Stainless Steel</a><ul><li><a id='gallery-ss-50' href='#'>50cm</a></li><li><a id='gallery-ss-60' href='#'>60cm</a></li><li><a id='gallery-ss-90' href='#'>90cm</a></li></ul></li><li><a href='#'>Black Series</a><ul><li><a id='gallery-bs-50' href='#'>50cm</a></li></ul></li>";
+                        submenu = "<li><a href='#' >Stainless Steel</a><ul><li><a id='gallery-ss-50' href='#'>50cm</a></li><li><a id='gallery-ss-60' href='#'>60cm</a></li><li><a id='gallery-ss-90' href='#'>90cm</a></li></ul></li><li><a href='#'>Black Series</a><ul><li><a id='gallery-bs-50' href='#'>50cm</a></li></ul></li>";
                         jQuery("#gallery-submenu").html(submenu);
+                        submenu = "<li><a id='specs-ss' href='#'>Stainless Steel</a></li><li><a id='specs-bs' href='#'>Black Series</a></li>";
+                        jQuery("#specs-submenu").html(submenu);
                         break;
                     }
                         default:
                         jQuery("#dishwasher-submenu").css("visibility","hidden");
                         jQuery("#gallery-submenu").html("");
+                        jQuery("#specs-submenu").html("");
                         break;
                 }
                 console.log("changeProductContent"+product);
