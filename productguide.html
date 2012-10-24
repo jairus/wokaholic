@@ -45,6 +45,26 @@
                 font-size: 14px;
             }
             
+            #nmgcontainer #dish-menu #dishwasher-submenu{
+                visibility: hidden;
+            }
+            
+            /*
+            #nmgcontainer #dish-menu  {
+                background-color: green;
+            }
+            #nmgcontainer #dish-menu #dishwasher{
+                visibility: visible;
+            } 
+            #nmgcontainer #dish-menu #dishwasher-submenu {
+                visibility: hidden;
+            }
+            
+            #nmgcontainer #dish-menu:hover #dishwasher-submenu{
+                visibility: visible;
+            }
+           
+            */
             
             
             </style>
@@ -70,15 +90,20 @@
                                                 product = jQuery(this).attr("id");
                                                 });
                 
-                /*canvas = jQuery("#content");
-                elemAbs(canvas);
-                elemWH(canvas, 1260,625);
-                elemZIndex(canvas, 10);
-                canvasImage(canvas,"images/"+product+"-"+info+".png");
-                elemTop(canvas, 165);
-                elemLeft(canvas, 10);
-                elemScale(canvas);
-                */
+                jQuery(".tabs li").each(function(){
+                                        jQuery(this).removeClass("info-current");
+                                        });
+                
+                jQuery("#"+info).addClass("info-current");
+                
+                switch (product) {
+                    case "dishwasher":
+                    product = "dishwasher-compact";
+                    
+                    break;
+                    
+                }
+                console.log("changeInfoContent"+product);
                 canvas = jQuery("#background");
                 elemAbs(canvas);
                 elemWH(canvas, 1024, 768);
@@ -87,11 +112,7 @@
                 //elemTop(canvas, 165);
                 //elemLeft(canvas, 10);
                 elemScale(canvas);
-                jQuery(".tabs li").each(function(){
-                                        jQuery(this).removeClass("info-current");
-                                        });
                 
-                jQuery("#"+info).addClass("info-current");
                 
                 
             }
@@ -102,18 +123,28 @@
                                              info = jQuery(this).attr("id");
                                              });
                 
-                /*canvas = jQuery("#content");
-                elemAbs(canvas);
-                elemWH(canvas, 1260,625);
-                elemZIndex(canvas, 10);
-                canvasImage(canvas,"images/"+product+"-"+info+".png");
-                elemTop(canvas, 165);
-                elemLeft(canvas, 10);
-                elemScale(canvas);
                 jQuery(".product-menu").each(function(){
                                              jQuery(this).removeClass("product-current");
                                              });
-                */
+                
+                jQuery("#"+product).addClass("product-current");
+                
+                switch (product) {
+                    case "dishwasher":
+                        product = "dishwasher-compact";
+                        jQuery("#dishwasher-submenu").css("visibility","visible");
+                        break;
+                    case "dishwasher-compact":
+                        jQuery("#dishwasher-submenu").css("visibility","visible");
+                        break;
+                    case "dishwasher-builtin":
+                        jQuery("#dishwasher-submenu").css("visibility","visible");
+                        break;
+                    default:
+                        jQuery("#dishwasher-submenu").css("visibility","hidden");
+                        break;
+                }
+                console.log("changeProductContent"+product);
                 canvas = jQuery("#background");
                 elemAbs(canvas);
                 elemWH(canvas, 1024, 768);
@@ -122,11 +153,7 @@
                 //elemTop(canvas, 165);
                 //elemLeft(canvas, 10);
                 elemScale(canvas);
-                jQuery(".product-menu").each(function(){
-                                             jQuery(this).removeClass("product-current");
-                                             });
                 
-                jQuery("#"+product).addClass("product-current");
                 var text;
                 switch(product) {
                     case "free-standing-cookers":
@@ -144,12 +171,13 @@
                     case "microwave-ovens":
                         text = "Microwave Ovens";
                         break;
-                    case "dishwasher":
-                        text = "Dishwasher";
+                    case "dishwasher-compact":
+                        text = "Compact Dishwasher";
                         break;
                 }
                 jQuery("#main").html(text);
             }
+            
             jQuery(function(){
                    /*//nmgcontainer
                    div = jQuery("#nmgcontainer");
@@ -268,6 +296,48 @@
                    //canvas.css("background-color", "blue");
                    //canvas.css("opacity", "0.5");
                    elemLink(canvas,"#");
+                   /*canvas.hover(function(){
+                                //alert("dishwasher hover");
+                                jQuery("#dishwasher-submenu").css("visibility", "visible");
+                                });
+                   */
+                   
+                   //dishwasher-compact
+                   canvas = jQuery("#dishwasher-compact");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 100,25);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas, 11 + 40);
+                   elemLeft(canvas, 340 + 150 + 120 + 75 + 70 + 140 + 15);
+                   //canvas.css("background-color", "blue");
+                   //canvas.css("opacity", "0.5");
+                   elemLink(canvas,"#");
+                   
+                   //dishwasher-builtin
+                   canvas = jQuery("#dishwasher-builtin");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 100,25);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas, 11 + 40 + 26);
+                   elemLeft(canvas, 340 + 150 + 120 + 75 + 70 + 140 + 15);
+                   //canvas.css("background-color", "pink");
+                   //canvas.css("opacity", "0.5");
+                   elemLink(canvas,"#");
+                   
+                  /* //dishwasher-submenu
+                   canvas = jQuery("#dishwasher-submenu");
+                   canvas.addClass("scale");
+                   elemAbs(canvas);
+                   elemWH(canvas, 100,34);
+                   elemZIndex(canvas, 10);
+                   elemTop(canvas, 11 + 38);
+                   elemLeft(canvas, 340 + 150 + 120 + 75 + 70 + 140 + 19);
+                   canvas.css("background-color", "#c2c2c2");
+                   //canvas.css("opacity", "0.5");
+                   elemLink(canvas,"#");
+                   */
                    
                    //content
                    canvas = jQuery("#content");
@@ -315,7 +385,7 @@
         
         
         <title>Wok-A-Holic</title>
-    </head>
+    </head> 
     <body style="margin: 0px;">
         <div id="nmgcontainer">
             <canvas id="background"></canvas>
@@ -324,7 +394,13 @@
             <div id="hobs" class="product-menu" ></div>
             <div id="hoods" class="product-menu" ></div>
             <div id="microwave-ovens" class="product-menu" ></div>
-            <div id="dishwasher" class="product-menu" ></div>
+            <div id="dish-menu">
+                <div id="dishwasher" class="product-menu" ></div>
+                <div id="dishwasher-submenu">
+                    <div id="dishwasher-compact" class="product-menu" ></div>
+                    <div id="dishwasher-builtin" class="product-menu" ></div>
+                </div>
+            </div>
             <canvas id="home"></canvas>
             
             <ul class="tabs" id="tab-menu">
