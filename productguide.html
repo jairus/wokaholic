@@ -129,7 +129,7 @@
                 } else if (info.search("specs") >= 0) {
                     jQuery("#specs").addClass("info-current");
                 }
-                
+                console.log("BEFORE changeInfoContent"+product +" : " + info);
                 switch (product) {
                     case "dishwasher": {
                         product = "dishwasher-compact";
@@ -145,8 +145,18 @@
                         }
                         break;
                     }
+                    case "hoods": {
+                        if (info=="gallery") {
+                            info = "gallery-sl-60";
+                        }
+                        if (info=="specs") {
+                            info = "specs-sl-60";
+                        }
+                        break;
+                    }
                 }
-                console.log("changeInfoContent"+product);
+                
+                console.log("changeInfoContent"+product +" : " + info);
                 canvas = jQuery("#background");
                 elemAbs(canvas);
                 elemWH(canvas, 1024, 768);
@@ -186,10 +196,21 @@
                     case "free-standing-cookers": {
                         jQuery("#dishwasher-submenu").css("visibility","hidden");
                         jQuery("#gallery-submenu").css("visibility","visible");
-                        submenu = "<li><a href='#' >Stainless Steel</a><ul><li><a id='gallery-ss-50' href='#'>50cm</a></li><li><a id='gallery-ss-60' href='#'>60cm</a></li><li><a id='gallery-ss-90' href='#'>90cm</a></li></ul></li><li><a href='#'>Black Series</a><ul><li><a id='gallery-bs-50' href='#'>50cm</a></li></ul></li>";
+                        submenu = "<li><a id='gallery-ss-50' href='#' >Stainless Steel</a><ul><li><a id='gallery-ss-50' href='#'>50cm</a></li><li><a id='gallery-ss-60' href='#'>60cm</a></li><li><a id='gallery-ss-90' href='#'>90cm</a></li></ul></li><li><a id='gallery-bs-50' href='#'>Black Series</a><ul><li><a id='gallery-bs-50' href='#'>50cm</a></li></ul></li>";
                         jQuery("#gallery-submenu").html(submenu);
                         submenu = "<li><a id='specs-ss' href='#'>Stainless Steel</a></li><li><a id='specs-bs' href='#'>Black Series</a></li>";
                         jQuery("#specs-submenu").html(submenu);
+                        break;
+                    }
+                    case "hoods": {
+                        jQuery("#dishwasher-submenu").css("visibility","hidden");
+                        jQuery("#gallery-submenu").css("visibility","visible");
+                        submenu = "<li><a id='gallery-sl-60' href='#' >Slim Line</a><ul><li><a id='gallery-sl-60' href='#'>60cm</a></li><li><a id='gallery-sl-90' href='#'>90cm</a></li></ul></li><li><a id='gallery-c-90'href='#'>Chimney</a></li>";
+                        jQuery("#gallery-submenu").html(submenu);
+                        submenu = "<li><a id='specs-sl-60' href='#' >Slim Line</a><ul><li><a id='specs-sl-60' href='#'>60cm</a></li><li><a id='specs-sl-90' href='#'>90cm</a></li></ul></li><li><a id='specs-c-90'href='#'>Chimney</a></li>";
+                        jQuery("#specs-submenu").html(submenu);
+                        
+                        info = "specs-sl-60";
                         break;
                     }
                         default:
@@ -198,7 +219,7 @@
                         jQuery("#specs-submenu").html("");
                         break;
                 }
-                console.log("changeProductContent"+product);
+                console.log("changeProductContent:"+product +" : " + info);
                 canvas = jQuery("#background");
                 elemAbs(canvas);
                 elemWH(canvas, 1024, 768);
@@ -440,14 +461,14 @@
                 <li ><a href="#" id="main" class="info-current">Cooking Ranges</a></li>
                 <li><a href="#" id="gallery">Gallery</a>
                     <ul id="gallery-submenu">
-                        <li><a href="#">Stainless Steel</a>
+                        <li><a id='gallery-ss-50' href="#">Stainless Steel</a>
                             <ul>
                                 <li><a id='gallery-ss-50' href="#">50 cm</a></li>
                                 <li><a id='gallery-ss-60' href="#">60 cm</a></li>
                                 <li><a id='gallery-ss-90' href="#">90 cm</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Black Series</a>
+                        <li><a id='gallery-bs-50' href="#">Black Series</a>
                             <ul>
                                 <li><a id='gallery-bs-50' href="#">50 cm</a></li> 
                             </ul>
